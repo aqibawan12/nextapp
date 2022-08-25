@@ -29,7 +29,7 @@ const App = () => {
       }
     );
     setBag(totalItem);
-   
+
     return { ...state };
     //
   }
@@ -37,6 +37,7 @@ const App = () => {
   // const items = JSON.parse(localStorage.getItem("items"));
   return (
     <Router>
+     
       <Navbar badge={bag} />
       <Routes>
         {data.map((value) => (
