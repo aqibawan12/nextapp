@@ -15,7 +15,7 @@ const itemsContents = (props) => {
         <Card style={{ display:'flex',flexDirection:'column',justifyContent:'center'}}>
              
           <img
-          className="pic_adjust"
+          className="pic_ayyyjust"
             src="https://via.placeholder.com/150/000000/FFFFFF/?text=itsolutionstuck.net"
             alt='123'
           /> 
