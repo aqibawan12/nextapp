@@ -1,0 +1,474 @@
+.ProductNameTag {
+    font-size: 15px;
+    margin-left: 44px;
+    margin-top: 78px;
+}
+
+.section {
+    display: flex;
+    margin: 8px;
+
+    height: 888px;
+    caret-color: transparent;
+    user-select: none;
+}
+
+.mediaQuery {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.main1 {
+
+    width: 45%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2px;
+}
+
+.center1 {
+
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4px;
+    margin-left: 1px;
+    margin-bottom: 20px;
+
+}
+
+.imgs {
+    margin: 1px
+}
+
+.end1 {
+    margin: 24px;
+}
+
+.end1 h2 {
+    font-size: 20px;
+    font-family: VisbyCF-Bold;
+    border-bottom: 1px solid #000;
+    width: fit-content;
+}
+
+.end1 p {
+    font-size: 18px;
+    font-family: VisbyCF-Bold;
+    color: #645959;
+    width: fit-content;
+}
+
+
+
+.main2 {
+
+
+    width: 50%;
+
+    display: flex;
+
+}
+
+.ima {
+
+    margin-top: 0px;
+
+}
+
+.left {
+
+    position: relative;
+    margin-top: 400px;
+    font-size: xx-large;
+
+}
+
+.left1 {
+    position: relative;
+    margin-top: 400px;
+    font-size: xx-large;
+
+}
+
+.left:hover {
+    color: #0000ff;
+    font-size: 29px;
+}
+
+.main3 {
+    margin: 25px;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.upper {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.ProductTittle {
+    font-size: x-large;
+    margin-bottom: -3px;
+    font-style: oblique;
+    color: rgb(60, 60, 60);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.productDes {
+    font-size: large;
+
+}
+
+.productDes span {
+    margin: 33px;
+    color: red;
+
+}
+
+.ageCard {
+
+
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.ageCardinner {
+    margin: 5px;
+    height: 44px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding-inline: 13px;
+    padding-top: 12px;
+    border: 1px solid rgb(116, 109, 109);
+
+}
+
+.addProduct {
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.counter {
+    margin: 1px;
+    height: 30px;
+    border-radius: 22px;
+    border: 2px solid rgb(116, 109, 109);
+    width: 150px;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dec {
+
+
+    display: flex;
+    justify-content: center;
+
+    width: 60px;
+
+
+}
+
+.sign {
+    color: cadetblue;
+    display: flex;
+    font-size: x-large;
+}
+
+.sign:hover {
+    color: #000;
+}
+
+.value {
+    display: flex;
+    flex: 0 0 4em;
+    box-sizing: border-box;
+    justify-content: center;
+    height: 30px;
+    border-left: 2px solid rgb(116, 109, 109);
+    border-right: 2px solid rgb(116, 109, 109);
+
+    align-items: center;
+}
+
+.value p {
+
+    font-size: x-large;
+
+}
+
+
+.btnSubmit {
+    width: 350px;
+
+    border-radius: 20px;
+    margin-top: 22px;
+    height: 50px;
+    color: beige;
+    background-color: #000000;
+}
+
+.imgS {
+
+    width: 130px;
+    border-radius: 9px;
+    height: 125px;
+    image-Resolution: from-image;
+
+
+}
+
+.container {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -33px;
+}
+
+.slider {
+    display: flex;
+    position: relative;
+    width: 100%;
+    padding: 5px;
+    margin-top: -300px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.slider__slides {
+    width: 100%;
+    padding-top: 66%;
+}
+
+.slider__slide {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: bold;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: lemonchiffon;
+    transition: 1s;
+    opacity: 0;
+}
+
+
+
+.slider__slide img {
+    width: 100%;
+}
+
+.slider__nav-button {
+    position: absolute;
+    margin: 15px;
+    height: 30px;
+    width: 30px;
+    margin-top: 100px;
+    background-color: #333;
+    opacity: .8;
+    cursor: pointer;
+}
+
+#nav-button--prev {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+#nav-button--next {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+#nav-button--prev::after,
+#nav-button--next::after {
+    content: "";
+    position: absolute;
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 3px;
+    width: 10%;
+    height: 10%;
+}
+
+#nav-button--next::after {
+    top: 50%;
+    right: 50%;
+    transform: translate(25%, -50%) rotate(-45deg);
+}
+
+#nav-button--prev::after {
+    top: 50%;
+    right: 50%;
+    transform: translate(75%, -50%) rotate(135deg);
+}
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width:1300px) {
+
+    .ProductNameTag {
+        margin-left: -5px;
+        margin-top: 68px;
+    }
+
+    .section {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .mediaQuery {
+
+
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 0px;
+
+    }
+
+    .main2 {
+
+        width: 100%;
+
+
+
+
+    }
+
+    .ima {
+        margin: 10px;
+    }
+
+    .left {
+        width: 20px;
+        margin-left: -10px;
+        margin-block-start: 290px;
+    }
+
+    .left1 {
+        width: 20px;
+        margin-left: -10px;
+        margin-block-start: 290px;
+    }
+
+    .main1 {
+        width: auto;
+        display: flex;
+        margin: 12px;
+    }
+
+    .imgS {
+
+        width: 70px;
+        border-radius: 9px;
+        height: 100px;
+        image-Resolution: from-image;
+
+
+    }
+
+    .main3 {
+        margin: 0px;
+        width: auto;
+        display: flex;
+
+
+    }
+
+
+    .upper {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .ProductTittle {
+        font-size: x-large;
+        margin-bottom: 4px;
+        font-style: oblique;
+        color: rgb(60, 60, 60);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+
+    .productDes {
+        font-size: large;
+
+    }
+
+    .productDes span {
+        margin: 100px;
+        color: red;
+
+    }
+
+    .btnSubmit {
+        margin: -15px;
+
+        border-radius: 20px;
+        margin-top: 22px;
+        height: 50px;
+        color: beige;
+        background-color: #000000;
+    }
+
+    .container {
+        width: 105%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       margin-left: -27px;
+
+
+
+
+    }
+
+    .slider {
+   
+        margin-top: 10px;
+         margin-right: -33px
+    }
+
+    .slider__slides {
+        padding: 0px;
+    }
+
+
+    .slider__nav-button {
+        height: 30px;
+        width: 30px;
+        margin-top: 10px;
+
+    }
+
+    .slider__nav-button:hover {
+        height: 40px;
+
+    }
+}

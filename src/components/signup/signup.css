@@ -1,0 +1,20 @@
+.textbox {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+@media screen and (min-width: 480px) {
+  .fitting1 {
+    position: fixed;
+    margin: 79px 500px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .fitting1 {
+    position: relative;
+    margin: 110px 10px;
+  }
+}
