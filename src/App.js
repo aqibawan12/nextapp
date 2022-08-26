@@ -15,7 +15,6 @@ import Cart from "./components/./Cart/Cart.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 const App = () => {
-  const [id, setId] = useState(0);
   const [bag, setBag] = useState(0);
   function operation(state, id) {
     let { totalItem } = state.item.reduce(
@@ -37,7 +36,6 @@ const App = () => {
   // const items = JSON.parse(localStorage.getItem("items"));
   return (
     <Router>
-     
       <Navbar badge={bag} />
       <Routes>
         {data.map((value) => (
@@ -69,7 +67,7 @@ const App = () => {
         />
         <Route path='/About' element={<About />} />
         <Route path='/Share' element={<Share />} />
-        <Route path='/cart' element={<Cart data={data} id={id} />} />
+        <Route path='/cart' element={<Cart data={data} id={bag} />} />
       </Routes>
     </Router>
   );

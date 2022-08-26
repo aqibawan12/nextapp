@@ -1,0 +1,189 @@
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.emptyCart h1 {
+  font-size: 3rem;
+  text-align-last: center;
+}
+
+.emptyBtn {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  height: 3rem;
+  width: 15rem;
+  font-size: 1rem;
+  background-color: rgb(34, 24, 24);
+  color: rgb(255, 255, 255);
+}
+
+.emptyBtn:hover {
+  background-color: black;
+}
+
+.emptyCart h2 {
+  font-size: 2rem;
+  color: black;
+}
+
+.emptyCart p {
+  color: rgb(42, 33, 33);
+  font-size: 1.2rem;
+  margin-top: -10px;
+}
+
+.emptyCart p label {
+  text-decoration: underline black;
+}
+
+.emptyCart p label:hover {
+  text-decoration: none;
+}
+
+.CartPro {
+  margin: 30px;
+  border: 2px solid thistle;
+  width: 60%;
+}
+
+.cartSection {
+  display: flex;
+  margin: 33px;
+  border-bottom: 1px solid black;
+}
+
+.cartDetail {
+  width: 70%;
+  display: flex;
+
+  margin: 10px;
+  margin-left: 50px;
+}
+
+.image {
+
+  width: 30%;
+  height: 220px;
+  image-resolution: from-image;
+}
+
+.cartMid {
+
+  display: flex;
+  flex-direction: column;
+  margin-left: 33px;
+  width: 60%;
+
+}
+
+.cartDes {
+
+  margin-top: -21px;
+
+
+}
+
+.cartDes h2 {
+  font-size: x-large;
+  font-weight: bolder;
+ 
+
+ 
+}
+.cartDes h2:hover {
+text-decoration:underline black;
+ cursor: pointer;
+
+ 
+}
+.cartDes p {
+  padding-block: 9px;
+  margin-top: -20px;
+font-size: small;
+font-style: oblique;
+}
+
+.items {
+  margin-top: 12px;
+
+}
+
+.p {
+  padding-block-start: 20px;
+
+}
+
+.counter1 {
+  margin: 1px;
+  height: 30px;
+  border-radius: 10px;
+  border: 2px solid rgb(214, 214, 214);
+  width: 120px;
+  display: flex;
+
+  align-items: center;
+  justify-content: space-around;
+}
+
+.value1 {
+  display: flex;
+  flex: 0 0 4em;
+  box-sizing: border-box;
+  justify-content: center;
+  height: 30px;
+  border-left: 2px solid rgb(214, 214, 214);
+  border-right: 2px solid rgb(214, 214, 214);
+  align-items: center;
+}
+.p{
+  font-weight:bold ;
+  font-size: large;
+}
+.CartEnd {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+
+
+  align-items: center;
+}
+
+.single {
+  flex: 0 1 138px;
+
+}
+
+.single h3 {
+  color: #000;
+  font-family: 'Archivo Narrow', sans-serif;
+  margin: 13px;
+ font-weight: bold;
+ font-size: large;
+}
+
+.remove {
+  flex: 1 0 0px;
+
+
+}
+
+.remove i {
+  font-size: 1.6rem;
+  color: rgba(214, 222, 2, 8.492);
+}
+.total {
+  padding-top: -21px;
+  font-family: 'Archivo Narrow', sans-serif;
+  font-weight: bold;
+  font-size: large;
+}
+
+@media only screen and (max-width: 480px) {
+  .emptyCart h1 {
+    font-size: 2rem;
+    text-align-last: center;
+  }
+}
