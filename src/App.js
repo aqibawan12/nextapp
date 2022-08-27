@@ -12,31 +12,39 @@ import data from "./components/./Products/data";
 import Des from "./components/./Products/Des.jsx";
 import image from "./components/./Products/images";
 import Cart from "./components/./Cart/Cart.jsx";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-const App = () => {
-  const [bag, setBag] = useState(0);
-  function operation(state, id) {
-    let { totalItem } = state.item.reduce(
-      (accum, current) => {
-        let { stockValue } = current;
-        accum.totalItem += stockValue;
-        return accum;
-      },
-      {
-        totalItem: 0,
-      }
-    );
-    setBag(totalItem);
+import { useEffect, useReducer } from "react";
 
-    return { ...state };
-    //
+import reducer from "./reducers";
+const initialState = {
+  item: data,
+};
+
+const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  useEffect(() => {
+    return dispatch({
+      type: "Total",
+    });
+  }, [state.item]);
+  const [bag, setBag] = useState();
+
+  const [id, setId] = useState();
+  const [no, setNo] = useState();
+  function operation(count, id) {
+    return dispatch({
+      type: "INCREMENT",
+      payload: id,
+      value: count ,
+    });
   }
 
   // const items = JSON.parse(localStorage.getItem("items"));
   return (
     <Router>
-      <Navbar badge={bag} />
+      <Navbar badge={state.totalItem} />
       <Routes>
         {data.map((value) => (
           <Route
@@ -67,7 +75,10 @@ const App = () => {
         />
         <Route path='/About' element={<About />} />
         <Route path='/Share' element={<Share />} />
-        <Route path='/cart' element={<Cart data={data} id={bag} />} />
+        <Route
+          path='/cart'
+          element={<Cart data={state.item} id={state.totalItem} />}
+        />
       </Routes>
     </Router>
   );

@@ -5,7 +5,7 @@ const data = [
     Price: "RS 3000",
     Feature: true,
     stock: 8,
-    stockValue: 40,
+    stockValue:10,
   },
   {
     nam: " Lawn Suit",
@@ -13,7 +13,7 @@ const data = [
     Price: "RS 3000",
     Feature: true,
     stock: 8,
-    stockValue: 20,
+    stockValue: 10,
   },
 ];
 export default data;

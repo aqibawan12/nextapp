@@ -9,6 +9,22 @@ const Reducer= (state,action)=>{
         });
         return { ...state, item: updatedCart };
       }
-      return state
+      if (action.type === "Total") {
+        let { totalItem } = state.item.reduce(
+          (accum, current) => {
+            let { stockValue } = current;
+            accum.totalItem += stockValue;
+            return accum;
+          },
+          {
+            totalItem: 0,
+          }
+        );
+       
+    
+        return { ...state,totalItem };
+      
+      }
+     return {...state}
 }
 export default Reducer

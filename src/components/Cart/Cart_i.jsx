@@ -1,16 +1,32 @@
-import React from "react";
+import React , {useReducer} from "react";
 import { useNavigate } from "react-router-dom";
 import { BsPlus, BsDash } from "react-icons/bs";
-import { AiTwotoneDelete } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 const Cart_i = (props) => {
-  console.log(props.name);
+
   let name = props.name;
   let id = props.id;
   let price = props.price;
   //   let stock = props.stock;
   let navigate = useNavigate();
   let stockValue = props.stockValue;
+function plus(id){
+  
+}
+function minus(id){
+
+}
+
+
+
+
+
+
+
+
   return (
+    
     <div className='cartSection'>
       <div className='cartDetail'>
         <img
@@ -27,7 +43,7 @@ const Cart_i = (props) => {
           <div className='items'>
             <div className='counter1'>
               <div className='dec'>
-                <p className='sign'>
+                <p className='sign' onClick={()=>plus(props.id)} >
                   <BsDash />
                 </p>
               </div>
@@ -35,7 +51,7 @@ const Cart_i = (props) => {
                 <p>{stockValue}</p>
               </div>
               <div className='dec'>
-                <p className='sign'>
+                <p className='sign' onClick={()=>minus(props.id)}>
                   <BsPlus />
                 </p>
               </div>
@@ -50,7 +66,7 @@ const Cart_i = (props) => {
         </div>
         <div className='remove'>
           <i>
-            <AiTwotoneDelete />
+            <RiDeleteBin6Line />
           </i>
         </div>
         <div className='total'>

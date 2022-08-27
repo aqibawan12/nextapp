@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import App from "./ImgZoom.tsx";
 import "./stylesDes.css";
 import { useMediaQuery } from "react-responsive";
 import InfoAdd from "./infoAdd";
-import reducer from "./Reducers";
+
 import { BsPlus, BsDash } from "react-icons/bs";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -20,17 +20,11 @@ const age = [
   { id: 5, age: "12-13 years" },
   { id: 6, age: "12-13 years" },
 ];
-const initialState = {
-  item: products,
-};
+
 const ItemsContents = (props) => {
   const nums = props.image.filter((val) => val.index === props.index);
   const [count, setCount] = useState(1);
   const [error, setError] = useState(1);
-
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  props.onselect(state, props.stockValue);
 
   let name = props.name;
   let price = props.price;
@@ -85,13 +79,9 @@ const ItemsContents = (props) => {
     }
   }
   function AddToCart(id) {
-    return dispatch({
-      type: "INCREMENT",
-      payload: id,
-      value: count,
-    });
+    props.onselect(count,id);
   }
-  
+
   let k = " >";
   return (
     <>
