@@ -24,6 +24,7 @@ const initialState = {
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
   useEffect(() => {
     return dispatch({
       type: "Total",
@@ -37,10 +38,28 @@ const App = () => {
     return dispatch({
       type: "INCREMENT",
       payload: id,
-      value: count ,
+      value: count,
     });
   }
-
+  function plus(id) {
+    return dispatch({
+      type: "dcre",
+      payload: id,
+    });
+  }
+  function minus(id) {
+    return dispatch({
+      type: "incr",
+      payload: id,
+    });
+  }
+  function empty(id) {
+  
+    return dispatch({
+      type: "clear",
+      payload: id,
+    });
+  }
   // const items = JSON.parse(localStorage.getItem("items"));
   return (
     <Router>
@@ -77,7 +96,16 @@ const App = () => {
         <Route path='/Share' element={<Share />} />
         <Route
           path='/cart'
-          element={<Cart data={state.item} id={state.totalItem} />}
+          element={
+            <Cart
+              data={state.item}
+              id={state.totalItem}
+              plus={plus}
+              minus={minus}
+              clear={empty}
+              total={state.price}
+            />
+          }
         />
       </Routes>
     </Router>

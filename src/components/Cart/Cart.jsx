@@ -5,15 +5,24 @@ import "./cart.css";
 import reducer from "../../reducers";
 
 const Cart = (props) => {
-  const initialState = {
-    item: props.data,
-  };
+console.log(props.id)
   let filter = props.data.filter((val) => val.stockValue > 0);
 
   let navigate = useNavigate();
-  const [state, dispatch] = [reducer, initialState];
-  function plus() {}
-  function minus() {}
+  const [ dispatch] = [reducer];
+  function plus(id) {
+    props.plus(id)
+  }
+
+
+
+  function minus(id) { props.minus(id)}
+function clear(id){
+  props.clear(id)
+}
+
+
+
   if (props.id === 0) {
     return (
       <>
@@ -55,6 +64,7 @@ const Cart = (props) => {
                 stockValue={val.stockValue}
                 plus={plus}
                 minus={minus}
+                clear={clear}
               />
             ))}
           </div>
@@ -76,7 +86,7 @@ const Cart = (props) => {
             </p>
             <p className='brake'></p>
             <h2 className='subTotal'>
-              Subtotal<span style={{ float: "right" }}> Rs 75000</span>
+              Subtotal<span style={{ float: "right" }}>{props.total}</span>
             </h2>
             <p
               style={{
