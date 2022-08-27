@@ -11,10 +11,11 @@ const Cart_i = (props) => {
   //   let stock = props.stock;
   let navigate = useNavigate();
   let stockValue = props.stockValue;
-function plus(id,stV){
-  
+function plus(id){
+  props.plus(id)
 }
 function minus(id){
+pro.minus(id)
 
 }
 

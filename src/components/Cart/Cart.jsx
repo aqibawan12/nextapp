@@ -51,6 +51,8 @@ const Cart = (props) => {
                 price={val.Price}
                 stock={val.stock}
                 stockValue={val.stockValue}
+                plus={plus}
+                minus={minus}
               />
             ))}
           </div>
