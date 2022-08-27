@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useReducer } from "react";
 import Items from "./Cart_i";
 import { useNavigate } from "react-router-dom";
 import "./cart.css";
+import reducer from "../../reducers";
 
 const Cart = (props) => {
+  const initialState = {
+    item: props.data,
+  };
   let filter = props.data.filter((val) => val.stockValue > 0);
 
   let navigate = useNavigate();
-
+  const [state, dispatch] = [reducer, initialState];
   if (props.id === 0) {
     return (
       <>
@@ -47,7 +51,6 @@ const Cart = (props) => {
                 price={val.Price}
                 stock={val.stock}
                 stockValue={val.stockValue}
-          
               />
             ))}
           </div>

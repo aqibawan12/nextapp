@@ -1,4 +1,4 @@
-import React , {useReducer} from "react";
+import React  from "react";
 import { useNavigate } from "react-router-dom";
 import { BsPlus, BsDash } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -11,7 +11,7 @@ const Cart_i = (props) => {
   //   let stock = props.stock;
   let navigate = useNavigate();
   let stockValue = props.stockValue;
-function plus(id){
+function plus(id,stV){
   
 }
 function minus(id){
