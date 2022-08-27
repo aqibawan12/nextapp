@@ -12,6 +12,8 @@ const Cart = (props) => {
 
   let navigate = useNavigate();
   const [state, dispatch] = [reducer, initialState];
+  function plus() {}
+  function minus() {}
   if (props.id === 0) {
     return (
       <>
@@ -40,7 +42,7 @@ const Cart = (props) => {
         <p className='emptyCart1'>
           <span style={{ borderBottom: "2px solid #d3d3d3" }}>
             Shopping Cart
-          </span>{" "}
+          </span>
         </p>
         <section className='cart'>
           <div className=' CartPro'>
