@@ -15,12 +15,11 @@ const Products = () => {
   }
   return (
     <>
-<div  >
+ 
     <Slider  />
-
-</div>
+ 
     
-      <div  style={{ display: "flex", flexWrap: "wrap",justifyContent:'space-between' }}>
+      <div   className="main-Pro">
         {data.map((value) => (
           <Items
             key={value.id}
