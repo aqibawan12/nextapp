@@ -12,13 +12,13 @@ const itemsContents = (props) => {
   return (
     <>
 
-      <Box className="adjust"  onClick={() => {
+      <Box className="adjust1"  onClick={() => {
             props.onselect(id);
           }}>
       <Card style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
            {fur.map((val)=>
           <img
-          className="pic_adjust"
+          className="pic_adjust1"
             src={val.imq}
             alt='123'
           />)} 

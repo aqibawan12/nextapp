@@ -7,7 +7,7 @@ import data from "./data";
 
 const Products = () => {
   const navigate = useNavigate();
-  const nai = data;
+
 
   function operation(id) {
      
@@ -15,9 +15,12 @@ const Products = () => {
   }
   return (
     <>
-      <Slider />
+<div  >
+    <Slider  />
 
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+</div>
+    
+      <div  style={{ display: "flex", flexWrap: "wrap",justifyContent:'space-between' }}>
         {data.map((value) => (
           <Items
             key={value.id}

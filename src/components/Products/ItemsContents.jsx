@@ -22,7 +22,7 @@ const itemsContents = (props) => {
             src={val.imq}
             alt='123'
           />)}
-       <span><h5 >{name1}</h5><p>{props.price}</p></span>
+       <span><h5 >{name1}</h5><p>Rs {props.price}</p></span>
         </Card>
         
       </Box>

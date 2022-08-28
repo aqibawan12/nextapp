@@ -1,54 +1,114 @@
-
-
-
-
 .swiper {
-  height: 250px;
-   padding-top: 50px;
-   margin: 15px;
-  }
+  margin-top: 80px;
+  height: 100%;
+  width: 95%;
+  margin-bottom: 30px;
+  caret-color: transparent;
+  user-select: none;
   
+}
+.main-Pro{
+   display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between
+}
+.swiper-slide img {
+  caret-color: transparent;
+  display: block;
+  width: 100%;
+  height: 450px;
+
+}
+.swiper-button-next ,.swiper-button-prev {
+  border-radius: 50%;
+  background-color: rgb(241, 228, 228);
+  width: 50px;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+  color: black;
+  font-size: 22px;
+  
+}
+.adjust {
+
+  width: 290px;
+  /* margin:7px 10px; */
+  margin-left: 20px;
+
+}
+
+.pic_adjust {
+  width: 280px;
+}
+/* .main-Pro{
+  border: 2px solid;
+  display:flex;
+   flex-wrap:wrap;
+   justify-content: flex-start
+} */
+
+@media only screen and (max-width: 480px) {
+  .swiper {
+    height: 250px;
+   margin-top: 70px;
+    
+  }
+
   .swiper-slide {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
-  
+
   }
-  
+
   .swiper-slide img {
     display: block;
     width: 100%;
     height: 250px;
-    
+
   }
+
+  .adjust {
+    width: 160px;
+    margin: 18px;
+    /* margin-left: 25px; */
+  }
+
+  .pic_adjust {
+    width: 160px;
+    height: 200px
+  }
+  .main-Pro{
+    display:flex;
+     flex-wrap:wrap;
+     justify-content: space-between
+ }
+
+}
+
+@media only screen and (max-width:409px) {
+  .adjust {
+    margin: 12px;
+  }
+  .swiper-button-next ,.swiper-button-prev {
+   display: none;
+  }
+}
+
+
+@media only screen and (max-width:383px) {
+  .adjust {
+    margin: 1px;
+  }
+  .swiper-button-next ,.swiper-button-prev {
+    display: none;
+   }
+}
+
+/* @media only  screen and (max-width:360px) {
   .adjust{
-    width: 160px;
-  margin:5px
+    margin: -22px;
   }
-  .pic_adjust{
-    width: 160px;
-    height:200px
-  }
-  @media only screen and (min-width: 480px) {
-  
-    .swiper {
-      height: 100%;
-       margin: 15px;
-      }
-      .swiper-slide img {
-        display: block;
-        width: 100%;
-        height: 450px;
-       
-      }
-      .adjust{
-        width: 290px;
-        /* margin:7px 10px; */
-        margin-left: 30px;
-        }
-        .pic_adjust{
-          width: 290px;
-        }
-  }
+} */

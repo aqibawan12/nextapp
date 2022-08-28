@@ -43,6 +43,7 @@ const ItemsContents = (props) => {
   useEffect(() => {
     const nims = nums.filter((val) => val.id === 0);
     nims.map((val) => setPic(val.imq));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function Swipes() {

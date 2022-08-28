@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import React from "react";
+ import {  useNavigate } from "react-router-dom";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -7,18 +8,23 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import images from "./images";
 import "./styles.css";
 
 // import required modules
 import { Keyboard, Scrollbar, Navigation, Pagination } from "swiper";
 
+
 export default function App() {
-  const pic =
-  "https://cdn.shopify.com/s/files/1/2635/3244/products/CAT_8985_360x.jpg?v=1657878980";
+ let navigate=useNavigate()
+  function operation(id){
+   navigate("/Product/" + id)
+  }
+  
   return (
     <>
-      <Swiper
+      <Swiper  
+    
         slidesPerView={1}
         centeredSlides={false}
         slidesPerGroupSkip={0}
@@ -32,20 +38,22 @@ export default function App() {
             slidesPerGroup: 1,
           },
         }}
-       
+     
+        navigation={true}
         pagination={{
           clickable: true,
         }}
-      
+         loop={true}
         modules={[Keyboard, Scrollbar, Navigation, Pagination]}
-        className="mySwiper"
-      >
-        <SwiperSlide onClick={()=>console.log(12)}>
-          <img src={pic}/>
-        </SwiperSlide>
-        <SwiperSlide>
-        <img src={pic}/>        </SwiperSlide>
+        className='mySwiper'
+         >
       
+          {images.map((val,index) => (
+              <SwiperSlide  key={index+1} onClick={()=>operation(val.id)} >
+            <img style={{imageRendering:'pixelated'}} src={val.imq} alt='12' />
+             </SwiperSlide>
+          ))}
+ 
       </Swiper>
     </>
   );
