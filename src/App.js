@@ -14,7 +14,7 @@ import image from "./components/./Products/images";
 import Cart from "./components/./Cart/Cart.jsx";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+
 import { useEffect, useReducer } from "react";
 
 import reducer from "./reducers";
@@ -30,10 +30,9 @@ const App = () => {
       type: "Total",
     });
   }, [state.item]);
-  const [bag, setBag] = useState();
 
-  const [id, setId] = useState();
-  const [no, setNo] = useState();
+
+
   function operation(count, id) {
     return dispatch({
       type: "INCREMENT",

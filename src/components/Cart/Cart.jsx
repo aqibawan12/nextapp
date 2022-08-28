@@ -1,27 +1,25 @@
-import React, { useReducer } from "react";
+import React from "react";
 import Items from "./Cart_i";
 import { useNavigate } from "react-router-dom";
 import "./cart.css";
-import reducer from "../../reducers";
+// import reducer from "../../reducers";
 
 const Cart = (props) => {
-console.log(props.id)
+  console.log(props.id);
   let filter = props.data.filter((val) => val.stockValue > 0);
 
   let navigate = useNavigate();
-  const [ dispatch] = [reducer];
+
   function plus(id) {
-    props.plus(id)
+    props.plus(id);
   }
 
-
-
-  function minus(id) { props.minus(id)}
-function clear(id){
-  props.clear(id)
-}
-
-
+  function minus(id) {
+    props.minus(id);
+  }
+  function clear(id) {
+    props.clear(id);
+  }
 
   if (props.id === 0) {
     return (
@@ -69,41 +67,45 @@ function clear(id){
             ))}
           </div>
           <div className='cartTo'>
-            <p style={{ fontSize: "15px", color: "#4b4b4b" }}>Order Notes</p>
-            <div className='textBox'>
+            <div className="txtBx">
+              {" "}
+              <p style={{ fontSize: "15px", color: "#4b4b4b" }}>Order Notes</p>
               <textarea
-                cols='40'
+                className='textBox'
+                // cols='40'
                 rows='4'
                 style={{
-                  fontSize: "18px",
-                  padding: "5px",
-                  borderRadius: "4px",
+                  resize: "vertical",
                 }}
               ></textarea>
+              <p style={{ fontSize: "12px" }}>
+                PLEASE LEAVE SPECIAL INSTRUCTIONS ABOVE
+              </p>
             </div>
-            <p style={{ fontSize: "12px" }}>
-              PLEASE LEAVE SPECIAL INSTRUCTIONS ABOVE
-            </p>
             <p className='brake'></p>
-            <h2 className='subTotal'>
-              Subtotal<span style={{ float: "right" }}>{props.total}</span>
-            </h2>
-            <p
-              style={{
-                fontSize: "13px",
-                color: "#141414",
-                marginBottom: "20px",
-              }}
-            >
-              Taxes and shipping calculated at checkout
-            </p>
-
-            <input
-              className='cartBTN'
-              type='button'
-              value='Continue Shopping'
-            />
-            <input className='cartBTN' type='button' value='Checkout' />
+            <div>
+              <h2 className='subTotal'>
+                Subtotal<span style={{ float: "right" }}>{props.total}</span>
+              </h2>
+              <p
+                style={{
+                  fontSize: "13px",
+                  color: "#141414",
+                  marginBottom: "20px",
+                }}
+              >
+                Taxes and shipping calculated at checkout
+              </p>
+              <div className='BTNSec'>
+                <input
+                  className='cartBTN'
+                  type='button'
+                  value='Continue Shopping'
+                  onClick={() => navigate("/")}
+                />
+                <input className='cartBTN' type='button' value='Checkout' />
+              </div>
+            </div>
           </div>
         </section>
       </>

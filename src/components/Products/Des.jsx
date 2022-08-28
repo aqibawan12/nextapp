@@ -11,7 +11,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import products from "./data";
+
 const age = [
   { id: 1, age: "12-13 years" },
   { id: 2, age: "12-13 years" },
@@ -24,10 +24,11 @@ const age = [
 const ItemsContents = (props) => {
   const nums = props.image.filter((val) => val.index === props.index);
   const [count, setCount] = useState(1);
-  const [error, setError] = useState(1);
+  // const [error, setError] = useState(1);
+  let error=12;
 
   let name = props.name;
-  let price = props.price;
+  // let price = props.price;
   const navigate = useNavigate();
   const [pic, setPic] = useState(count);
   const [index, SetIndex] = useState(nums.length - 1);

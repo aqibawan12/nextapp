@@ -1,6 +1,7 @@
 .cart {
   display: flex;
- 
+
+
 }
 
 .emptyCart1 {
@@ -11,10 +12,10 @@
   text-transform: uppercase;
   font-size: 25px;
   font-family: VisbyCF-Bold;
- color: #000;
- font-weight: 900;
- margin-bottom: 2px;
- 
+  color: #000;
+  font-weight: 900;
+  margin-bottom: 2px;
+
 
 }
 
@@ -24,6 +25,7 @@
   align-items: center;
   margin-top: 100px;
 }
+
 .emptyCart h1 {
   font-size: 3rem;
   text-align-last: center;
@@ -44,7 +46,7 @@
 }
 
 .emptyCart h2 {
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: black;
 }
 
@@ -75,14 +77,14 @@
 }
 
 .cartDetail {
-  width: 70%;
+  width: 100%;
   display: flex;
 
   margin: 10px;
-  margin-left: 50px;
+  margin-left: 60px;
 }
 
-.image {
+.image55 {
 
   width: 30%;
   height: 220px;
@@ -99,13 +101,30 @@
 }
 
 .cartDes {
-
+  display: flex;
+  align-items: baseline;
   margin-top: -21px;
+  justify-content: space-between;
+  width: 100%;
+}
 
+.cart_i {
+  margin: 10px;
+  margin-inline-end: 102px;
 
 }
 
+.price h3 {
+  color: #000;
+  font-family: 'Archivo Narrow', sans-serif;
+  margin: 13px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .cartDes h2 {
+  color: #000;
+  font-family: 'Archivo Narrow', sans-serif;
   font-size: x-large;
   font-weight: bolder;
 
@@ -118,6 +137,21 @@
   cursor: pointer;
 
 
+}
+
+.toV {
+  color: #000;
+  font-family: 'Archivo Narrow', sans-serif;
+  margin: 2px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.itemTotal {
+  margin-inline-end: 1px;
+
+  font-size: 18px;
+  margin-top: 40px;
 }
 
 .cartDes p {
@@ -137,12 +171,21 @@
 
 }
 
+.Bcounter {
+
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+}
+
+
 .counter1 {
   margin: 1px;
-  height: 30px;
+  height: 35px;
   border-radius: 10px;
-  border: 2px solid  #8c8c8c;
-  width: 120px;
+  border: 2px solid #8c8c8c;
+  width: 150px;
   display: flex;
 
   align-items: center;
@@ -151,12 +194,12 @@
 
 .value1 {
   display: flex;
-  flex: 0 0 4em;
+  flex: 0 0 5em;
   box-sizing: border-box;
   justify-content: center;
   height: 30px;
-  border-left: 2px solid  #8c8c8c;
-  border-right: 2px solid  #8c8c8c;
+  border-left: 2px solid #8c8c8c;
+  border-right: 2px solid #8c8c8c;
   align-items: center;
 }
 
@@ -165,13 +208,12 @@
   font-size: large;
 }
 
-.CartEnd {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
 
+.textBox {
 
-  align-items: center;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 4px;
 }
 
 .single {
@@ -179,27 +221,23 @@
 
 }
 
-.single h3 {
-  color: #000;
-  font-family: 'Archivo Narrow', sans-serif;
-  margin: 13px;
-  font-weight: bold;
-  font-size: large;
-}
-
-.remove {
-  flex: 1 0 0px;
-
+.textBox {
+  width: 400px;
 
 }
+
+
+
 
 .remove i {
   font-size: 1.6rem;
-  color:  #8c8c8c;
+  color: #8c8c8c;
 }
-.remove i:hover{
+
+.remove i:hover {
   color: #000;
 }
+
 .total {
   padding-top: -21px;
   font-family: 'Archivo Narrow', sans-serif;
@@ -220,11 +258,7 @@
   font-family: VisbyCF-Medium;
 }
 
-.textBox {
-  height: 6rem;
-  width: 25rem;
- margin: 0%;
-}
+
 
 .subTotal {
 
@@ -236,6 +270,13 @@
 .brake {
   border-bottom: 1px solid #8c8c8c;
 
+}
+
+.BTNSec {
+  margin-top: -25px;
+  display: flex;
+
+  flex-direction: column;
 }
 
 .cartBTN {
@@ -252,4 +293,129 @@
     font-size: 2rem;
     text-align-last: center;
   }
+
+  .cart {
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .txtBx {
+    margin-bottom: 30px;
+  }
+
+  .textBox {
+    margin: 5px;
+    width: 320px;
+
+  }
+
+  .cartTo {
+    flex-direction: column-reverse;
+
+  }
+
+  .BTNSec {
+    margin-left: -20px;
+    margin-bottom: 30px;
+  }
+
+  .subTotal {
+    margin-inline: 12px;
+  }
+
+  .cart {
+    margin-top: 12px;
+
+  }
+
+  .CartPro {
+    border-color: transparent;
+    margin: 0%;
+   
+    width: 100%;
+
+  }
+
+  .cartSection {
+ 
+    
+    margin: 15px;
+
+  }
+
+  .cartDetail {
+   
+    margin: 0px;
+    margin-left: 0px;
+  }
+
+  .image55 {
+ height: 140px;
+    margin-top: 5px;
+  }
+
+  .cartMid {
+    
+    margin: 10px;
+   
+    width: 100%;
+    
+  
+    
+  }
+
+  .cartDes {
+
+/* border: 2px solid; */
+    
+   
+    flex-direction: column;
+  
+  }
+
+  .cartDes h2 {
+ /* border: 2px solid; */
+    font-size: 18px;
+    letter-spacing: 1px;
+
+  }
+  .price h3 {
+   margin-top: -7px;
+  
+    font-size: 18px;
+  }
+
+  .cart_i {
+ 
+    margin: 1px;
+    margin-inline-end: 0px;
+     
+
+  }
+  .items {
+    margin-top: 5px;
+   
+  
+  }
+  .itemTotal{
+    margin-top: 15px;
+    font-size: 16px;
+  }
+  .toV {
+    
+    margin: 1px;
+    
+    font-size: 17px;
+  }
+  .counter1 {
+    
+    height: 30px;
+    width: 120px;
+  
+  }
+  .value1{
+    flex: 0 0 4em;
+  }
+
 }

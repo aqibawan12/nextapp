@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BsPlus, BsDash } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -29,17 +29,22 @@ let val =stockValue*price
     <div className='cartSection'>
       <div className='cartDetail'>
         <img
-          className='image'
-          src='https://cdn.shopify.com/s/files/1/2635/3244/products/WEB_0282_3e23347f-3d49-47fd-8d79-2fc362623cb2.jpg?v=1660902417'
+          className='image55'
+          src=
+  'https://cdn.shopify.com/s/files/1/2635/3244/products/WEB_0282_3e23347f-3d49-47fd-8d79-2fc362623cb2.jpg?v=1660902417'
           alt='12'
         /> 
         <div className='cartMid'>
           <div className='cartDes'>
+            <div className="cart_i">
             <h2 onClick={() => navigate("/Product/" + id)}>{name}</h2>
-            <p>F3014SH-113-BLK</p>
-            <p>Size: 12-13 Year</p>
+            <span><p>F3014SH-113-BLK</p>
+            <p>Size: 12-13 Year</p></span></div>
+            <span className="price">   <h3>Rs {price}</h3></span>
+           
           </div>
           <div className='items'>
+            <div className="Bcounter">
             <div className='counter1'>
               <div className='dec'>
                 <p className='sign' onClick={() => plus(props.id)}>
@@ -55,13 +60,22 @@ let val =stockValue*price
                 </p>
               </div>
             </div>
-            <p className='p'>Item Total</p>
+            <div className='remove' onClick={() => clear(props.id)}>
+          <i>
+            <RiDeleteBin6Line />
+          </i>
+        </div>
+            
+            </div>
+            <h2 className='itemTotal'>
+             Item Total<span className="toV" style={{ float: "right" }}>Rs {val}</span>
+              </h2>
           </div>
         </div>
       </div>
-      <div className='CartEnd'>
+      {/* <div className='CartEnd'>
         <div className='single'>
-          <h3>{price}</h3>
+       
         </div>
         <div className='remove' onClick={() => clear(props.id)}>
           <i>
@@ -71,7 +85,7 @@ let val =stockValue*price
         <div className='total'>
           <h4>{val}</h4>
         </div>
-      </div>
+      </div> */}
     </div>
   
   );
