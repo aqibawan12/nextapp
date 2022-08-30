@@ -1,16 +1,18 @@
 import { initializeApp } from "firebase/app";
 import {getAuth} from 'firebase/auth'
+import {getFirestore} from 'firebase/firestore'
 const firebaseConfig = {
-  apiKey: "AIzaSyBdqOLlBPB4DCwqEDYsZWzS6kRoIqGL4eY",
-  authDomain: "first-react-app-43bb2.firebaseapp.com",
-  projectId: "first-react-app-43bb2",
-  storageBucket: "first-react-app-43bb2.appspot.com",
-  messagingSenderId: "258158230664",
-  appId: "1:258158230664:web:ad48f9ad8481c91ad9b33d",
-  measurementId: "G-GHC8YJMBQF"
+  apiKey: "AIzaSyBJ16Rk4wdtkpAMF1DEfZAR9b5zafl0kMQ",
+  authDomain: "merit-blog.firebaseapp.com",
+  databaseURL: "https://merit-blog.firebaseio.com",
+  projectId: "merit-blog",
+  storageBucket: "merit-blog.appspot.com",
+  messagingSenderId: "580971367862",
+  appId: "1:580971367862:web:d775c2a272753bccf90517",
+  measurementId: "G-NY826E1JEY"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth()
-export {app,auth};
+const db = getFirestore(app)
+export {app,auth,db};

@@ -209,15 +209,16 @@ const ItemsContents = (props) => {
               </div>
             </div>
             <p>{error}</p>
-            <input
+            <input 
               onClick={() => AddToCart(props.index)}
               className='btnSubmit'
               type='button'
-              value='hello to the future'
+              value='Add to Cart'
             />
             {isTabletOrMobile && (
               <div
                 style={{
+               
                   marginBottom: "-80px",
                   marginTop: "50px",
                   marginLeft: "1px",

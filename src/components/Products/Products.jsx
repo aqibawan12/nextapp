@@ -3,11 +3,11 @@ import Slider from "./Slider";
 import Items from "./ItemsContents";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
-import data from "./data";
-
-const Products = () => {
+ 
+ 
+const Products = (props) => {
   const navigate = useNavigate();
-
+ 
 
   function operation(id) {
      
@@ -20,12 +20,12 @@ const Products = () => {
  
     
       <div   className="main-Pro">
-        {data.map((value) => (
+        {props.data.map((value) => (
           <Items
             key={value.id}
-            name={value.nam}
+            name={value.name}
             index={value.id}
-            price={value.Price}
+            price={value.price}
             onselect={operation}
           />
         ))}
