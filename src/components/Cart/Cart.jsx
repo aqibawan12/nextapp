@@ -1,17 +1,20 @@
-import React from "react";
+import React  from "react";
 import Items from "./Cart_i";
 import { useNavigate } from "react-router-dom";
 import "./cart.css";
 // import reducer from "../../reducers";
 
 const Cart = (props) => {
-  console.log(props.id);
+
   let filter = props.data.filter((val) => val.stockValue > 0);
+ 
 
   let navigate = useNavigate();
 
   function plus(id) {
+   
     props.plus(id);
+
   }
 
   function minus(id) {
@@ -20,6 +23,7 @@ const Cart = (props) => {
   function clear(id) {
     props.clear(id);
   }
+ 
 
   if (props.id === 0) {
     return (
@@ -55,9 +59,9 @@ const Cart = (props) => {
           <div className=' CartPro'>
             {filter.map((val) => (
               <Items
-                name={val.nam}
+                name={val.name}
                 id={val.id}
-                price={val.Price}
+                price={val.price}
                 stock={val.stock}
                 stockValue={val.stockValue}
                 plus={plus}

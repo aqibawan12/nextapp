@@ -1,10 +1,11 @@
-import React from 'react'
-import PFODUCT from './Products/Products'
-const Home = () => {
-  return (<>
-  
-     <PFODUCT/></>
-  )
-}
+import React from "react";
+import PFODUCT from "./Products/Products";
+const Home = (props) => {
+  return (
+    <>
+      <PFODUCT data = {props.data} />
+    </>
+  );
+};
 
-export default Home
+export default Home;

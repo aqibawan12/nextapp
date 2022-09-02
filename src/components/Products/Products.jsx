@@ -8,7 +8,6 @@ import "./styles.css";
 const Products = (props) => {
   const navigate = useNavigate();
  
-
   function operation(id) {
      
     navigate("/Product/" + id);
@@ -20,7 +19,7 @@ const Products = (props) => {
  
     
       <div   className="main-Pro">
-        {props.data.map((value) => (
+        { props.data.map((value) => (
           <Items
             key={value.id}
             name={value.name}

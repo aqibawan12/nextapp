@@ -82,6 +82,8 @@ const ItemsContents = (props) => {
   }
   function AddToCart(id) {
     props.onselect(count,id);
+   props.ons(id)
+    
   }
 
   let k = " >";
