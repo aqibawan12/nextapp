@@ -25,7 +25,7 @@ const ItemsContents = (props) => {
   const nums = props.image.filter((val) => val.index === props.index);
   const [count, setCount] = useState(1);
   // const [error, setError] = useState(1);
-  let error=12;
+  let error = 12;
 
   let name = props.name;
   // let price = props.price;
@@ -80,10 +80,9 @@ const ItemsContents = (props) => {
       setCount(count - 1);
     }
   }
+
   function AddToCart(id) {
-    props.onselect(count,id);
-   props.ons(id)
-    
+    props.onselect(count, id);
   }
 
   let k = " >";
@@ -211,7 +210,7 @@ const ItemsContents = (props) => {
               </div>
             </div>
             <p>{error}</p>
-            <input 
+            <input
               onClick={() => AddToCart(props.index)}
               className='btnSubmit'
               type='button'
@@ -220,7 +219,6 @@ const ItemsContents = (props) => {
             {isTabletOrMobile && (
               <div
                 style={{
-               
                   marginBottom: "-80px",
                   marginTop: "50px",
                   marginLeft: "1px",

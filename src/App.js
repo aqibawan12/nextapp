@@ -23,7 +23,7 @@ import { useEffect, useState } from "react";
 
 const App = () => {
   const ref = collection(db, "users");
-  const user = React.createContext();
+
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const getUsers = async () => {
@@ -43,17 +43,19 @@ const App = () => {
   let [pass, setPass] = useState(0);
   let [pass1, setPass1] = useState(0);
   let [eff, setEff] = useState(false);
-  let [eff1, setEff1] = useState(false);
+  
 
   useEffect(() => {
     setTimeout(() => {
       setEff(true);
-    }, 4000);
+    }, 100);
   });
-
+  
   function operation(id, count) {
+  
     setPass(id);
     setPass1(count);
+     
   }
 
   let [pluss, setPluss] = useState();
@@ -70,29 +72,13 @@ const App = () => {
     setClears(id);
   }
   useEffect(() => {
-    function operation(id, count) {
-      setPass(id);
-      setPass1(count);
-    }
-    function plus(id) {
-      setPluss(id);
-    }
-    function minus(id) {
-      setMinuss(id);
-    }
-
     operation();
     plus();
     minus();
   });
-  let [daata, setData] = useState([]);
-  useEffect(() => {
-  
+
  
-   
-  
-  }, []); 
-  let data = JSON.parse(localStorage.getItem("state"));
+ 
   function passing() {
     if (eff === true) {
       return (
@@ -117,10 +103,7 @@ const App = () => {
     setState(stat);
     setPrice(pric);
   }
- 
- useEffect(()=>{
-  localStorage.setItem('state',JSON.stringify(state))
- })
+
   return (
     <Router>
       <div>
@@ -142,7 +125,6 @@ const App = () => {
                 // stock={value.stock}
                 // stockValue={value.stockValue}
                 onselect={operation}
-               
               />
             }
           />
@@ -186,39 +168,5 @@ const App = () => {
 };
 
 export default App;
-////localStorage
 
-// const getdata = () => {
-//   let lData = JSON.parse(localStorage.getItem("state1"));
-//   // setStore(lData)
-//   if (lData) {
-//     return lData;
-//   } else {
-//     return [];
-//   }
-// };
 
-// const [items1, setItems] = useState([]);
-// let [d, sD] = useState([]);
-
-// function storing(id, count) {
-//   const data = users.filter((val) => val.id === id);
-//   sD(data);
-//   console.log(d)
-//   const app = d.map((val) => {
-//     if (val.id === id) {
-//       return { ...val, stockValue: val.stockValue = +count };
-//     }
-
-//     return { ...val };
-//   });
-// setTimeout(() => {
-//   sD(...d,app)
-//  console.log(d)
-// },1000);
-//   setItems([...items1, data]);
-// }
-// // console.log(items1);
-// useEffect(() => {
-//   localStorage.setItem(`state1`, JSON.stringify(items1));
-// }, [items1]);

@@ -25,6 +25,7 @@ const Products = (props) => {
             name={value.name}
             index={value.id}
             price={value.price}
+            image= {value.image}
             onselect={operation}
           />
         ))}

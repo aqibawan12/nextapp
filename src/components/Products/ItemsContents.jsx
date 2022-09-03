@@ -8,6 +8,7 @@ const itemsContents = (props) => {
 
   let name1 = props.name;
   let id = props.index;
+  console.log(props.image)
 
   return (
     <>
@@ -26,7 +27,7 @@ const itemsContents = (props) => {
           }}
         >
           {fur.map((val) => (
-            <img className='pic_adjust' src={val.imq} alt='123' />
+            <img className='pic_adjust' src={props.image} alt='123' />
           ))}
           <span style={{display:'flex',flexDirection:'column',alignItems:"flex-start" ,height:'100px',}}  >
             <h5>{name1}</h5>

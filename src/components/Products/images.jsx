@@ -30,6 +30,11 @@ const image = [
     id: 2,
     imq: "https://cdn.shopify.com/s/files/1/2635/3244/products/CAT_8985_360x.jpg?v=1657878980",
   },
+  {
+    index: 2,
+    id: 0,
+    imq: "https://cdn.shopify.com/s/files/1/2635/3244/products/CAT_8985_360x.jpg?v=1657878980",
+  },
 
   {
     index: 1,
@@ -55,7 +60,7 @@ const image = [
   {
     index: 3,
     id: 2,
-    imq: "",
+    imq: "https://cdn.shopify.com/s/files/1/2635/3244/products/CAT_8985_360x.jpg?v=1657878980",
   },
   {
     index: 3,
