@@ -22,7 +22,13 @@ const age = [
 ];
 
 const ItemsContents = (props) => {
-  const nums = props.image.filter((val) => val.index === props.index);
+  let newArr = [];
+  for (let index = 0; index <= 10; index++) {
+    newArr[index] = props.images[index];
+  }
+
+  const arr = newArr.filter((a) => a);
+
   const [count, setCount] = useState(1);
   // const [error, setError] = useState(1);
   let error = 12;
@@ -31,18 +37,18 @@ const ItemsContents = (props) => {
   // let price = props.price;
   const navigate = useNavigate();
   const [pic, setPic] = useState(count);
-  const [index, SetIndex] = useState(nums.length - 1);
-  let to = nums.length - 1;
+  const [index, SetIndex] = useState(arr.length - 1);
+  let to = arr.length - 1;
 
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1300px)" });
   const isDesktop = useMediaQuery({ query: "(min-width: 1300px)" });
-  function operation(val, id) {
+  function operation(val) {
     setPic(val);
   }
 
   useEffect(() => {
-    const nims = nums.filter((val) => val.id === 0);
-    nims.map((val) => setPic(val.imq));
+    const nims = arr.filter((val, index) => index === 0);
+    nims.map((val) => setPic(val));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -52,18 +58,18 @@ const ItemsContents = (props) => {
     } else {
       SetIndex(0);
     }
-    const nims = nums.filter((val) => val.id === index);
-    nims.map((val) => setPic(val.imq));
+    const nims = arr.filter((val, ind) => ind === index);
+    nims.map((val) => setPic(val));
   }
 
   function Swipes1() {
     if (index !== 0) {
       SetIndex(index - 1);
     } else {
-      SetIndex(nums.length - 1);
+      SetIndex(arr.length - 1);
     }
-    const nims = nums.filter((val) => val.id === index);
-    nims.map((val) => setPic(val.imq));
+    const nims = arr.filter((val, ind) => ind === index);
+    nims.map((val) => setPic(val));
   }
 
   function navi() {
@@ -102,10 +108,10 @@ const ItemsContents = (props) => {
         <div className='mediaQuery'>
           <div className='main1'>
             <div className='center1'>
-              {nums.map((value, index) => (
+              {arr.map((value, index) => (
                 <div
                   onClick={() => {
-                    operation(value.imq, value.id);
+                    operation(value);
                   }}
                   className='imgs'
                 >
@@ -113,7 +119,7 @@ const ItemsContents = (props) => {
                     key={index}
                     className='imgS'
                     loading='lazy'
-                    src={value.imq}
+                    src={value}
                     alt='44'
                   />
                 </div>

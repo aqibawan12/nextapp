@@ -104,6 +104,22 @@ const App = () => {
     setPrice(pric);
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <Router>
       <div>
@@ -122,6 +138,7 @@ const App = () => {
                 index={value.id}
                 price={value.price}
                 image={image}
+                images={value.images}
                 // stock={value.stock}
                 // stockValue={value.stockValue}
                 onselect={operation}
