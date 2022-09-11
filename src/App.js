@@ -18,13 +18,15 @@ import Cart from "./components/./Cart/Cart.jsx";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { collection, doc, getDocs } from "firebase/firestore";
-import { db } from "./firebase";
+import { db, cb } from "./firebase";
 import { useEffect, useState } from "react";
 
 const App = () => {
   const ref = collection(db, "users");
+  const ref1 = collection(db, "cat");
 
   const [users, setUsers] = useState([]);
+  const [cat, setCat] = useState([]);
   useEffect(() => {
     const getUsers = async () => {
       const items = [];
@@ -33,8 +35,19 @@ const App = () => {
       data1.forEach((val) => {
         items.push({ ...val.data() });
       });
-
       setUsers(items);
+    };
+
+    getUsers();
+  }, []);
+  useEffect(() => {
+    const getUsers = async () => {
+      const ite = [];
+      const dat = await getDocs(ref1);
+      dat.forEach((val) => {
+        ite.push({ ...val.data() });
+      });
+      setCat(ite);
     };
 
     getUsers();
@@ -43,19 +56,16 @@ const App = () => {
   let [pass, setPass] = useState(0);
   let [pass1, setPass1] = useState(0);
   let [eff, setEff] = useState(false);
-  
 
   useEffect(() => {
     setTimeout(() => {
       setEff(true);
     }, 100);
   });
-  
+
   function operation(id, count) {
-  
     setPass(id);
     setPass1(count);
-     
   }
 
   let [pluss, setPluss] = useState();
@@ -77,8 +87,6 @@ const App = () => {
     minus();
   });
 
- 
- 
   function passing() {
     if (eff === true) {
       return (
@@ -104,22 +112,6 @@ const App = () => {
     setPrice(pric);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <Router>
       <div>
@@ -137,7 +129,6 @@ const App = () => {
                 name={value.name}
                 index={value.id}
                 price={value.price}
-                image={image}
                 images={value.images}
                 // stock={value.stock}
                 // stockValue={value.stockValue}
@@ -147,10 +138,10 @@ const App = () => {
           />
         ))}
 
-        {CatData.map((value) => (
+        {cat.map((value, index) => (
           <Route
             path={"/" + value.name}
-            key={value.id}
+            key={index}
             element={<Items value={value.name} data={users} />}
           />
         ))}
@@ -158,12 +149,9 @@ const App = () => {
         <Route path='/' element={<Home data={users} />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/Product' element={<Products data={users} />} />
-        <Route path='/Category' element={<Category />} />
-        <Route
-          path='/Feature'
-          element={<Feature data={users} image={image} />}
-        />
+        <Route path='/Product' element={<Products data={users} data1 = {cat}  />} />
+        <Route path='/Category' element={<Category data = {cat} />} />
+        <Route path='/Feature' element={<Feature data={users} />} />
         <Route path='/About' element={<About />} />
         <Route path='/Share' element={<Share />} />
         <Route
@@ -185,5 +173,3 @@ const App = () => {
 };
 
 export default App;
-
-

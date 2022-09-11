@@ -1,14 +1,13 @@
 import { Box, Card } from "@mui/material";
 import React from "react";
 import "./styles.css";
-import images from "./images";
+ 
 const itemsContents = (props) => {
-  const nums = images.filter((val) => val.index === props.index);
-  const fur = nums.filter((val) => val.id === 0);
+ 
 
   let name1 = props.name;
   let id = props.index;
-  console.log(props.image)
+
 
   return (
     <>
@@ -26,9 +25,9 @@ const itemsContents = (props) => {
            marginBottom:'20px'
           }}
         >
-          {fur.map((val) => (
-            <img className='pic_adjust' src={props.image} alt='123' />
-          ))}
+          
+            <img className='pic_adjust' src={props.image[0]} alt='123' />
+       
           <span style={{display:'flex',flexDirection:'column',alignItems:"flex-start" ,height:'100px',}}  >
             <h5>{name1}</h5>
             <p style={{marginTop:"-4px"}}>Rs {props.price}</p>
