@@ -2,6 +2,8 @@ import React from "react";
 import Cstate from "./components/./cart-state/action.jsx";
 import Signup from "./components/./signup/Signup";
 import Navbar from "./components/./Navbar/Navbar";
+import Nd from "./components/./Navbar/nd";
+
 import Home from "./components/Home";
 import Login from "./components/./login/Login";
 import Products from "./components/./Products/Products";
@@ -111,12 +113,11 @@ const App = () => {
     setState(stat);
     setPrice(pric);
   }
-
   return (
     <Router>
-      <div>
-        <Navbar badge={value} />
-      </div>
+      <Navbar badge={value} />
+
+      <Nd />
       {passing()}
       <Routes>
         {users.map((value) => (
@@ -146,11 +147,14 @@ const App = () => {
           />
         ))}
 
-        <Route path='/' element={<Home data={users} />} />
+        <Route path='/' element={<Home data={users} data1={cat} />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/Product' element={<Products data={users} data1 = {cat}  />} />
-        <Route path='/Category' element={<Category data = {cat} />} />
+        <Route
+          path='/Product'
+          element={<Products data={users} data1={cat} />}
+        />
+        <Route path='/Category' element={<Category data={cat} />} />
         <Route path='/Feature' element={<Feature data={users} />} />
         <Route path='/About' element={<About />} />
         <Route path='/Share' element={<Share />} />

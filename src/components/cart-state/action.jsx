@@ -10,21 +10,30 @@ const Action = (props) => {
   const initialState = {
     item: props.data,
   };
+  const [state, dispatch] = useReducer(reducer, initialState
+    , () => {
+      const data = localStorage.getItem("state");
+      if (data) {
+        return JSON.parse(data);
+      }
+  
+    //   // return data ? JSON.parse(data) : {name:"aqib"}
+      }
+    
+    
+    
+    );
 
-  //
-  const [state, dispatch] = useReducer(reducer, initialState, () => {
-    const data = localStorage.getItem("state");
-    return data ? JSON.parse(data) : [];
-  });
   useEffect(() => {
     localStorage.setItem("state", JSON.stringify(state));
-  }, [state.item]);
+  });
   useEffect(() => {
     return dispatch({
       type: "Total",
     });
   }, [state.item]);
 
+  console.log(state);
   useEffect(() => {
     return dispatch({
       type: "INCREMENT",
@@ -32,8 +41,8 @@ const Action = (props) => {
       value: count,
     });
   }, [props.count]);
+
   useEffect(() => {
-    console.log(props.minus1);
     return dispatch({
       type: "dcre",
       payload: props.minus1,

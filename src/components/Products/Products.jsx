@@ -28,7 +28,7 @@ const Products = (props) => {
  <div>
       <h2 className="titleCag">SHOP BY CATEGORY</h2>
       <div><Feature data={props.data1}  /></div></div>
-      <h2>Shop by Product</h2>
+      <h2 className="titleCag" style={{marginTop:"44px",marginBottom:"33px"}} >Shop by Product</h2>
       <div   className="main-Pro">
         { props.data.map((value) => (
           <Items

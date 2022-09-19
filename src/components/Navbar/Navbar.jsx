@@ -59,13 +59,13 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
+    color: "brown",
     [theme.breakpoints.up("md")]: {
       width: "20ch",
     },
@@ -76,7 +76,6 @@ function handleClick(event) {
   event.preventDefault();
 }
 export default function PrimarySearchAppBar(props) {
- 
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -101,10 +100,10 @@ export default function PrimarySearchAppBar(props) {
     <CategoryRoundedIcon />,
   ];
   const Apc = [<ShareRoundedIcon />, <InfoRoundedIcon />];
-  function Call(){
-   navigate('/Cart')
+  function Call() {
+    navigate("/Cart");
   }
- 
+
   function operation(id) {
     if (id === 1) {
       navigate("Product");
@@ -182,11 +181,14 @@ export default function PrimarySearchAppBar(props) {
       </div>
     </Box>
   );
-  
 
   return (
-    <Box sx={{ flexGrow: 1}}>
-      <AppBar position='fixed' variant="elevation">
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar
+        position='fixed'
+        variant='elevation'
+        style={{ color: "white", backgroundColor: "black" }}
+      >
         <Toolbar>
           <IconButton
             size='large'
@@ -195,32 +197,34 @@ export default function PrimarySearchAppBar(props) {
             aria-label='open drawer'
             sx={{ mr: 2 }}
           >
-            <div>
+ 
               {["left"].map((anchor) => (
-                <React.Fragment key={anchor}>
+                <div key={anchor}>
                   <MenuIcon onClick={toggleDrawer(anchor, true)}>
                     {anchor}
                   </MenuIcon>
-                  <Drawer
+                <div>  <Drawer  
                     anchor={anchor}
+                    
                     open={state[anchor]}
                     onClose={toggleDrawer(anchor, false)}
-                  >
-                    {list(anchor)}
-                  </Drawer>
-                </React.Fragment>
+                  ><div > {list(anchor)}</div>
+                   
+                  </Drawer></div>
+                </div>
               ))}
-            </div>
+         
           </IconButton>
-          <Typography
-            variant='h6'
-            noWrap
-            component='div'
-            sx={{ display: { xs: "none", sm: "block" } }}
+
+          <Search
+            style={{
+              backgroundColor: "white",
+              color: "black",
+              borderRadius: "22px",
+              width: "20%",
+            }}
+            sx={{ display: { xs: "none", md: "flex" } }}
           >
-            MUI
-          </Typography>
-          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -229,36 +233,42 @@ export default function PrimarySearchAppBar(props) {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+          <Typography
+          
+            style={{ width: "60%", display: "flex", justifyContent: "center" }}
+            variant='h6'
+            noWrap
+            component='div'
+          >
+            <h1
+              style={{
+                fontSize: "35px",
+                height: "10px",
+                margin: "0px",
+                color: "red",
+              }}
+            >
+              Lime{" "}
+            </h1>
+            <h1 style={{ fontSize: "35px", margin: "0px" }}> Light</h1>
+          </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-         
-            <IconButton onClick={Call}
-              size='large'
-              color='inherit'
-            > 
+            <IconButton onClick={Call} size='large' color='inherit'>
               <Badge badgeContent={props.badge} color='error'>
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
-           
-          <IconButton onClick={Call}
-              size='large'
-             
-              color='inherit'
-            >
-              <Badge badgeContent={props.badge}  color='error'>
+            <IconButton onClick={Call} size='large' color='inherit'>
+              <Badge badgeContent={props.badge} color='error'>
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            
           </Box>
         </Toolbar>
       </AppBar>
-      
-      
     </Box>
   );
 }

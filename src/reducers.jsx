@@ -1,5 +1,6 @@
 const Reducer = (state, action) => {
   if (action.type === "INCREMENT") {
+     
     let updatedCart = state.item.map((curElem) => {
       if (curElem.id === action.payload) {
         return { ...curElem, stockValue: curElem.stockValue + action.value };
