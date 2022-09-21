@@ -3,6 +3,16 @@ import { useEffect, useReducer, useState, useContext } from "react";
 import reducer from "../../reducers";
 import Cart from "../Cart/Cart";
 
+
+
+
+
+
+
+
+
+
+
 const Action = (props) => {
   let id = props.id;
   let count = props.count;
@@ -10,23 +20,21 @@ const Action = (props) => {
   const initialState = {
     item: props.data,
   };
-  const [state, dispatch] = useReducer(reducer, initialState
-    , () => {
-      const data = localStorage.getItem("state");
-      if (data) {
-        return JSON.parse(data);
-      }
-  
-    //   // return data ? JSON.parse(data) : {name:"aqib"}
-      }
+  const saved = ()=> {
+    const data = localStorage.getItem("state1");
+    return data ? JSON.parse(data) :initialState;
+  }
+  const [state, dispatch] = useReducer(reducer,initialState,saved);
+    
+   
     
     
     
-    );
 
   useEffect(() => {
-    localStorage.setItem("state", JSON.stringify(state));
-  });
+    localStorage.setItem("state1", JSON.stringify(state));
+  },[state]);
+  
   useEffect(() => {
     return dispatch({
       type: "Total",

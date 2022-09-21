@@ -13,11 +13,10 @@ const Products = (props) => {
      
     navigate("/Product/" + id);
   }
-  console.log(props.data1)
+ 
   return (
     <>
- 
-    <Slider  />
+     <Slider  />
     <div style={{borderTop:'3px solid rgb(76, 73, 73)' ,
   width:'60%',
   marginLeft:'23%'
@@ -25,9 +24,9 @@ const Products = (props) => {
   
   
   }}></div>
- <div>
+ <div >
       <h2 className="titleCag">SHOP BY CATEGORY</h2>
-      <div><Feature data={props.data1}  /></div></div>
+      <div ><Feature data={props.data1}  /></div></div>
       <h2 className="titleCag" style={{marginTop:"44px",marginBottom:"33px"}} >Shop by Product</h2>
       <div   className="main-Pro">
         { props.data.map((value) => (

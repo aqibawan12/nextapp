@@ -62,7 +62,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setEff(true);
-    }, 100);
+    }, 6000);
   });
 
   function operation(id, count) {
@@ -116,8 +116,11 @@ const App = () => {
   return (
     <Router>
       <Navbar badge={value} />
+      <div style={{ marginBottom: "135px" }}>
+        {" "}
+        <Nd />
+      </div>
 
-      <Nd />
       {passing()}
       <Routes>
         {users.map((value) => (

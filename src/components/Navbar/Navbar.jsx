@@ -9,8 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
+ 
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -186,8 +185,8 @@ export default function PrimarySearchAppBar(props) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position='fixed'
-        variant='elevation'
-        style={{ color: "white", backgroundColor: "black" }}
+        
+        style={{ color: "white", backgroundColor: "black",height:'50px' }}
       >
         <Toolbar>
           <IconButton
@@ -195,12 +194,12 @@ export default function PrimarySearchAppBar(props) {
             edge='start'
             color='inherit'
             aria-label='open drawer'
-            sx={{ mr: 2 }}
+            sx={{ mr: -2 }}
           >
  
               {["left"].map((anchor) => (
-                <div key={anchor}>
-                  <MenuIcon onClick={toggleDrawer(anchor, true)}>
+                <div key={anchor} style={{marginTop:"-6px"}}>
+                  <MenuIcon onClick={toggleDrawer(anchor, true)} style={{fontSize:'30px'}} >
                     {anchor}
                   </MenuIcon>
                 <div>  <Drawer  
@@ -222,6 +221,8 @@ export default function PrimarySearchAppBar(props) {
               color: "black",
               borderRadius: "22px",
               width: "20%",
+              height:"30px",
+              marginTop:'-12px'
             }}
             sx={{ display: { xs: "none", md: "flex" } }}
           >
@@ -235,22 +236,22 @@ export default function PrimarySearchAppBar(props) {
           </Search>
           <Typography
           
-            style={{ width: "60%", display: "flex", justifyContent: "center" }}
+            style={{ width: "60%", display: "flex", justifyContent: "center"  , marginTop:'-13px',marginLeft:'42px'}}
             variant='h6'
             noWrap
             component='div'
           >
             <h1
               style={{
-                fontSize: "35px",
-                height: "10px",
+                fontSize: "32px",
+                
                 margin: "0px",
                 color: "red",
               }}
             >
               Lime{" "}
             </h1>
-            <h1 style={{ fontSize: "35px", margin: "0px" }}> Light</h1>
+            <h1 style={{ fontSize: "32px", margin: "0px" }}> Light</h1>
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
