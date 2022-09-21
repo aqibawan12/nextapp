@@ -19,13 +19,13 @@ const itemsContents = (props) => {
             display: "flex",
             flexDirection: "column",
 
-            marginBottom: "20px",
+            
           }}
         >
-          <img className='pic_adjust' src={props.image[0]} alt='123' />
+          <img className='pic_adjust' src={props.image[0]} alt='img' />
 
-          <span style={{ marginTop: "-32px", marginLeft: "12px" }}>
-            <h5 style={{ fontSize: "25px" }}>{name1}</h5>
+          <span style={{ marginTop: "-32px", marginLeft: '12px'}}>
+            <h5 style={{ height:'40px', fontSize: "20px" }}>{name1}</h5>
             <p style={{ fontSize: "22px", marginTop: "-25px" }}>
               Rs {props.price}
             </p>
