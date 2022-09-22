@@ -1,5 +1,6 @@
 import React from "react";
 import "./nav.css";
+import { useNavigate,Link,to } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useMediaQuery } from "react-responsive";
@@ -45,7 +46,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Nd = () => {
+const Nd = (props) => {
+  const nav = useNavigate();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1300px)" });
   const isDesktop = useMediaQuery({ query: "(min-width: 1300px)" });
 
@@ -60,16 +62,48 @@ const Nd = () => {
               fontSize: "44px",
               color: "darkred",
               cursor: "pointer",
+             
             }}
           >
             <AccountCircleRoundedIcon />
           </p>
         )}
         <div className='ind'>
-          <p>Women</p>
-          <p>Girls</p>
-          <p>Accessories</p>
-          <p>Sale</p>
+          <p 
+                      onClick={() => {
+              props.selection("women");
+             
+            }}
+          >
+           <Link className="t" to={"genre/women"}>women</Link>
+          </p>
+          <p
+            onClick={() => {
+              props.selection("girl");
+             
+              
+            }}
+          >
+          <Link className="t" to={"genre/girl"}>girl</Link>
+          </p>
+          <p
+            onClick={() => {
+              props.selection("Accessories");
+             
+            }}
+          >
+            
+            <Link className="t" to={"genre/Accessories "}> Accessories</Link>
+          </p>
+          <p
+            onClick={() => {
+              props.selection("sale");
+              nav("/genre/"+'sale');
+            }}
+          >
+            
+            <Link className="t" to={"genre/Sale "}> Sale </Link>
+          </p>
         </div>
         {isDesktop && (
           <p

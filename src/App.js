@@ -3,7 +3,7 @@ import Cstate from "./components/./cart-state/action.jsx";
 import Signup from "./components/./signup/Signup";
 import Navbar from "./components/./Navbar/Navbar";
 import Nd from "./components/./Navbar/nd";
-
+import G from './components/./genre/g.jsx'
 import Home from "./components/Home";
 import Login from "./components/./login/Login";
 import Products from "./components/./Products/Products";
@@ -18,12 +18,13 @@ import Items from "./components/Category/display";
 import CatData from "./components/Category/cat";
 import Cart from "./components/./Cart/Cart.jsx";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { collection, doc, getDocs } from "firebase/firestore";
-import { db, cb } from "./firebase";
+import { db } from "./firebase";
 import { useEffect, useState } from "react";
 
 const App = () => {
+
   const ref = collection(db, "users");
   const ref1 = collection(db, "cat");
 
@@ -113,12 +114,17 @@ const App = () => {
     setState(stat);
     setPrice(pric);
   }
+  let [item,setItems]=useState();
+  function setting(id){
+setItems(id)
+  }
+  
   return (
     <Router>
       <Navbar badge={value} />
       <div style={{ marginBottom: "135px" }}>
         {" "}
-        <Nd />
+        <Nd selection={setting} />
       </div>
 
       {passing()}
@@ -161,6 +167,8 @@ const App = () => {
         <Route path='/Feature' element={<Feature data={users} />} />
         <Route path='/About' element={<About />} />
         <Route path='/Share' element={<Share />} />
+        {data.map((val)=>
+        <Route path={'/genre/'+val.name }element={<G name={item} data={users}  />} />)}
         <Route
           path='/cart'
           element={

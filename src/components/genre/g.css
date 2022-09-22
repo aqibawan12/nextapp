@@ -1,0 +1,98 @@
+.g {
+    width: 100%;
+ 
+}
+
+.gTd {
+
+    width: 50%;
+    margin-top: -30px;
+    transform: translate(45%);
+    border-bottom: 2px dotted black;
+
+}
+
+.gTh1 {
+    margin: '0px';
+
+
+    transform: translate(40%);
+
+
+    text-transform: uppercase;
+}
+.con{
+   width: 80%;
+  overflow: hidden;
+    transform: translate(25%);
+    margin-left: 0px;
+}
+.data{
+   
+    display: flex;
+    flex-wrap: wrap;
+   width: 66%;
+ margin: 4px;
+    
+    
+}
+.dI{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 7px;
+}
+.dImage{
+    width: 100px;
+    height: 100px;
+}
+.dText{
+    text-transform: uppercase;
+    font-weight: lighter;
+    margin-top: 7px;
+}
+/* product display start */
+.conP{
+   
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+.Pdis{
+   
+    width: 87%;
+    display: flex;
+    flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 8px;
+
+}
+.PdisIn{
+    display: flex;
+    flex-direction: column;
+   margin-bottom: 22px;
+   box-sizing: border-box;
+   box-shadow: 0px 1px 0px;
+}
+.Tittle01{
+    font-size: medium;
+    font-weight: bold;
+    margin: 4px;
+    margin-bottom: 12px;
+}
+.P0{
+    font-size: medium;
+    font-weight: 400;
+    margin: 4px;
+    margin-bottom: 12px;
+}
+.filter{
+    
+    width: 12%;
+}
+
+.INfoImg{
+    width: 250px;
+    height: 270px;
+}
