@@ -36,6 +36,7 @@ const Products = (props) => {
             index={value.id}
             price={value.price}
             image={value.images}
+            cat={value.category}
             onselect={operation}
           />
         ))}

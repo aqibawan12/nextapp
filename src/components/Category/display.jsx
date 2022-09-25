@@ -1,71 +1,168 @@
-import { Box, Card } from "@mui/material";
-import React  from "react";
-import { useNavigate } from "react-router-dom";
-import images from "../Products/images";
-const Items = (props) => {
- 
-  const data = props.data.filter((val) => val.category === props.value);
-  let navigate = useNavigate()
-  function operation(id) {
-    const nums = images.filter((val) => val.index === id);
-    const fur = nums.filter((val) => val.id === 0);
+import { useState, useEffect } from "react";
+import Fil from "./../genre/Filter";
+import Pri from "./../genre/PriceFil";
+import Cr from "./../genre/crumbs";
+import { collection, doc, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-    return (
-      <>
-        {fur.map((val) => (
-          <img className='pic_adjust' src={val.imq} alt='123' />
-        ))}
-      </>
-    );
+const Filterion = [
+  "Feature",
+  "Date New to Old",
+  "Date Old to New",
+  "Price High to low",
+  "Price low  to High ",
+  " ALPHABETICALLY, Z-A",
+  " ALPHABETICALLY, A-Z",
+];
+const G = (props) => {
+  let location = useLocation();
+  let newText = location.pathname.replace("/", "");
+
+  let navigate = useNavigate();
+  let [show, setShow] = useState(props.data);
+  let [color, setColor] = useState([]);
+  let [size, setSize] = useState([]);
+  let [fab, setFab] = useState([]);
+  let [season, setSeason] = useState([]);
+  let [piece, setPiece] = useState([]);
+  function operation(id) {
+    setPiece(props.data1.filter((val) => id === val.sub));
+    navigate("/" + id);
   }
-function nav(id){
-    navigate("/product/"+id)
-}
+
+  function coll(id) {
+    setColor(id);
+  }
+
+  function collSi(id) {
+    setSize(id);
+  }
+
+  function collSea(id) {
+    setSeason(id);
+  }
+
+  let [fi, setFi] = useState("");
+  function collFI(id) {
+    setFi(id);
+  }
+  let [pr1, setPr1] = useState([0, 100000]);
+
+  function collPr(id) {
+    if (Array.isArray(id)) {
+      setPr1(id);
+    }
+  }
+
+  const data2 = () => {
+    let arr = [];
+    let arr1 = [];
+    if (piece.length) {
+      const customs = piece.map((value) => arr1.push(value.nam));
+
+      let data = props.data.filter((item) => arr1.includes(item.category));
+      setFab(data);
+    } else {
+      const customs = props.data1
+        .filter((val) => newText === val.name)
+        .map((value) => arr.push(value.name));
+      let data = props.data.filter((item) => arr.includes(item.sub));
+      setFab(data);
+    }
+    let updated = fab;
+
+    if (color.length) {
+      updated = updated.filter((item) => color.includes(item.color));
+    }
+    if (season.length) {
+      updated = updated.filter((item) => season.includes(item.season));
+    }
+    if (size.length) {
+      updated = updated.filter((item) => size.includes(item.size));
+    }
+
+    if (pr1.length) {
+      updated = updated.filter(
+        (item) => item.price >= pr1[0] && item.price <= pr1[1]
+      );
+    }
+
+    if (fi.length) {
+      if (fi === Filterion[0]) {
+        updated = updated.filter((val) => val.feature === true);
+      }
+      if (fi === Filterion[2]) {
+        updated = updated.sort((a, b) => b.id - a.id);
+      }
+      if (fi === Filterion[1]) {
+        updated = updated.sort((a, b) => a.id - b.id);
+      }
+      if (fi === Filterion[3]) {
+        updated = updated.sort((a, b) => (a.price > b.price ? -1 : 1));
+      }
+      if (fi === Filterion[4]) {
+        updated = [...updated].sort((a, b) => (a.price > b.price ? 1 : -1));
+      }
+      if (fi === Filterion[5]) {
+        updated = updated.sort((a, b) => (a.name > b.name ? -1 : 1));
+      }
+      if (fi === Filterion[6]) {
+        updated = [...updated].sort((a, b) => (a.name > b.name ? 1 : -1));
+      }
+    }
+
+    setShow(updated);
+  };
+
+  useEffect(() => {
+    data2();
+  }, [fab, piece, color, season, size, fi, pr1, newText]);
+
   return (
     <>
-      <p
-        className='emptyCart1'
-        style={{ borderBottom: "2px solid #d3d3d3", fontSize: "2.5em" }}
-      >
-        {props.value}
-      </p>
-      <div className='main-Pro'>
-        {data.map((val) => (
-          <Box
-            key={val.id}
-            style={{ marginTop: "79px" }}
-            className='adjust'
-            onClick={() => {
-              nav(val.id)
-            }}
-          >
-            <Card
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                marginBottom: "20px",
-              }}
-            >
-              {operation(val.id)}
+      <div className='g'>
+        <div className='gTd'>
+          <h1 className='gTh1'>{newText}</h1>
+        </div>
+        <div className='con'>
+          <div className='data'>
+            {props.data1
+              .filter((val) => newText === val.sub)
+              .map((val) => (
+                <div className='dI' onClick={() => operation(val.nam)}>
+                  <img className='dImage' src={val.imz} alt='12' />{" "}
+                  <h4 className='dText'>{val.nam}</h4>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+      {/* product display section */}
+      <div className='conP'>
+        <div className='Pdis'>
+          {show.map((val) => (
+           
+              <div className='PdisIn' onClick={()=>navigate("/Product/" + val.id)}>
+                <img className='INfoImg' src={val.images[0]} alt='' />
+                <p className='Tittle01'> {val.name}</p>
+                <p className='P0'>Rs {val.price}</p>
+              </div>
+           
+          ))}
+        </div>
+        <div className='filter'>
+          <h4>Sort by</h4>
 
-              <span
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  height: "100px",
-                }}
-              >
-                <h5>{val.name}</h5>
-                <p style={{ marginTop: "-4px" }}>Rs {val.price}</p>
-              </span>
-            </Card>
-          </Box>
-        ))}
+          <Fil data={Filterion} name={"filterion"} re={collFI} />
+
+          <p>filters</p>
+
+          <Pri name={"Price"} re={collPr} />
+        </div>
       </div>
     </>
   );
 };
 
-export default Items;
+export default G;

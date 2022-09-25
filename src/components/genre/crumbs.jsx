@@ -30,7 +30,7 @@ export default function MultipleSelectCheckmarks(props) {
 
   let newArr = [];
   if (props.data === undefined) {
-    console.log("");
+     
   } else {
     for (let index = 0; index < 100; index++) {
       newArr[index] = props.data[index];

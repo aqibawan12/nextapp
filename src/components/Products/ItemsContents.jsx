@@ -11,7 +11,7 @@ const itemsContents = (props) => {
       <Box
         className='adjust'
         onClick={() => {
-          props.onselect(id);
+          props.onselect(id,props.cat);
         }}
       >
         <Card

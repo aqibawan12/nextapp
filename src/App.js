@@ -3,7 +3,7 @@ import Cstate from "./components/./cart-state/action.jsx";
 import Signup from "./components/./signup/Signup";
 import Navbar from "./components/./Navbar/Navbar";
 import Nd from "./components/./Navbar/nd";
-import G from './components/./genre/g.jsx'
+import G from "./components/./genre/g.jsx";
 import Home from "./components/Home";
 import Login from "./components/./login/Login";
 import Products from "./components/./Products/Products";
@@ -18,13 +18,17 @@ import Items from "./components/Category/display";
 import CatData from "./components/Category/cat";
 import Cart from "./components/./Cart/Cart.jsx";
 
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { collection, doc, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
 import { useEffect, useState } from "react";
 
 const App = () => {
-
   const ref = collection(db, "users");
   const ref1 = collection(db, "cat");
 
@@ -114,11 +118,11 @@ const App = () => {
     setState(stat);
     setPrice(pric);
   }
-  let [item,setItems]=useState();
-  function setting(id){
-setItems(id)
+  let [item, setItems] = useState();
+  function setting(id) {
+    setItems(id);
   }
-  
+
   return (
     <Router>
       <Navbar badge={value} />
@@ -147,12 +151,12 @@ setItems(id)
             }
           />
         ))}
-
+{/* <Items value={value.name} data={users} data1={cat} /> */}
         {cat.map((value, index) => (
           <Route
             path={"/" + value.name}
             key={index}
-            element={<Items value={value.name} data={users} />}
+            element={<Items name={value.name} data={users} data1={cat} />}
           />
         ))}
 
@@ -160,15 +164,19 @@ setItems(id)
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route
-          path='/Product'
+          path='/'
           element={<Products data={users} data1={cat} />}
         />
         <Route path='/Category' element={<Category data={cat} />} />
         <Route path='/Feature' element={<Feature data={users} />} />
         <Route path='/About' element={<About />} />
         <Route path='/Share' element={<Share />} />
-        {data.map((val)=>
-        <Route path={'/genre/'+val.name }element={<G name={item} data={users}  />} />)}
+        {data.map((val) => (
+          <Route
+            path={"/genre/" + val.name}
+            element={<G name={item} data={users} data1={cat} />}
+          />
+        ))}
         <Route
           path='/cart'
           element={

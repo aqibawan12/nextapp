@@ -4,7 +4,7 @@ import Pri from "./PriceFil";
 import Cr from "./crumbs";
 import { collection, doc, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./g.css";
 const Filterion = [
   "Feature",
@@ -34,14 +34,16 @@ const G = (props) => {
 
     getUsers();
   }, [newText]);
-
+  let navigate = useNavigate();
   let [show, setShow] = useState(props.data);
   let [color, setColor] = useState([]);
   let [size, setSize] = useState([]);
   let [fab, setFab] = useState([]);
   let [season, setSeason] = useState([]);
   let [piece, setPiece] = useState([]);
-
+  function operation(id) {
+    navigate("/" + id);
+  }
   function coll(id) {
     setColor(id);
   }
@@ -64,16 +66,26 @@ const G = (props) => {
   function collFI(id) {
     setFi(id);
   }
-  let [pr,setPr]=useState('')
+  let [pr1, setPr1] = useState([0, 100000]);
+
   function collPr(id) {
-    setPr(id);
+    if (Array.isArray(id)) {
+      setPr1(id);
+    }
   }
 
-  const data2 = () => {
-    let updated = props.data;
+   
+
+  const data2 = () => { 
+     let arr=[]
+    
+     const customs = props.data1.filter((val) => newText === val.type)
+      .map((value) =>arr.push(value.name));
+      let data = props.data.filter((item) => arr.includes(item.category));
+
+    let updated = data;
     if (fab.length) {
       updated = updated.filter((item) => fab.includes(item.fab));
-      console.log(updated);
     }
     if (piece.length) {
       updated = updated.filter((item) => piece.includes(item.piece));
@@ -87,6 +99,13 @@ const G = (props) => {
     if (size.length) {
       updated = updated.filter((item) => size.includes(item.size));
     }
+
+    if (pr1.length) {
+      updated = updated.filter(
+        (item) => item.price >= pr1[0] && item.price <= pr1[1]
+      );
+    }
+
     if (fi.length) {
       if (fi === Filterion[0]) {
         updated = updated.filter((val) => val.feature === true);
@@ -116,7 +135,7 @@ const G = (props) => {
 
   useEffect(() => {
     data2();
-  }, [fab, piece, color, season, size, fi]);
+  }, [fab, piece, color, season, size, fi, pr1, newText]);
 
   return (
     <>
@@ -126,12 +145,14 @@ const G = (props) => {
         </div>
         <div className='con'>
           <div className='data'>
-            {users.map((val) => (
-              <div className='dI'>
-                <img className='dImage' src={val.image} alt='12' />{" "}
-                <h4 className='dText'>{val.name}</h4>
-              </div>
-            ))}
+            {props.data1
+              .filter((val) => newText === val.type)
+              .map((val) => (
+                <div className='dI' onClick={() => operation(val.name)}>
+                  <img className='dImage' src={val.image} alt='12' />{" "}
+                  <h4 className='dText'>{val.name}</h4>
+                </div>
+              ))}
           </div>
         </div>
       </div>
@@ -139,7 +160,7 @@ const G = (props) => {
       <div className='conP'>
         <div className='Pdis'>
           {show.map((val) => (
-            <div className='PdisIn'>
+            <div className='PdisIn'  onClick={()=>navigate("/Product/" + val.id)}>
               <img className='INfoImg' src={val.images[0]} alt='' />
               <p className='Tittle01'> {val.name}</p>
               <p className='P0'>Rs {val.price}</p>
@@ -152,7 +173,9 @@ const G = (props) => {
           <Fil data={Filterion} name={"filterion"} re={collFI} />
 
           <p>filters</p>
+
           <Pri name={"Price"} re={collPr} />
+
           {users.map((val) => (
             <Cr data={val.season} name={"season"} re={collSea} />
           ))}

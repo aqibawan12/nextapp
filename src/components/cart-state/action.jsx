@@ -40,8 +40,7 @@ const Action = (props) => {
       type: "Total",
     });
   }, [state.item]);
-
-  console.log(state);
+ 
   useEffect(() => {
     return dispatch({
       type: "INCREMENT",
