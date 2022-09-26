@@ -7,13 +7,14 @@ const Category = (props) => {
     navigate("/" + name);
   }
   const n = "a1";
-  
+ let data = props.data.filter((val)=>val.name)
+ 
   return (
     <div  >
       
 
       <div className='cagS'  >
-        {props.data.map((val) => (
+        { data.map((val) => (
           <div
           
             className={val.items}

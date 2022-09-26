@@ -11,7 +11,7 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 3.5 + ITEM_PADDING_TOP,
-      width: 260,
+      width: 240,
     },
   },
 };
@@ -31,7 +31,7 @@ function Main(props) {
  
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 250 }}>
+     <FormControl variant="standard" sx={{ m: 1,  }} className="FormCon">
         <InputLabel id='demo-multiple-checkbox-label'>{props.name}</InputLabel>
         <Select MenuProps={MenuProps}>
           <MenuItem>

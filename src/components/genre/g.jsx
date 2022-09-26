@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import Fil from "./Filter";
 import Pri from "./PriceFil";
 import Cr from "./crumbs";
-import { collection, doc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./g.css";
 const Filterion = [
+  "Sort by",
   "Feature",
   "Date New to Old",
   "Date Old to New",
@@ -30,9 +31,11 @@ const G = (props) => {
         items.push({ ...val.data() });
       });
       setUsers(items);
+      //eslint-disable-next-line
     };
 
     getUsers();
+    //eslint-disable-next-line
   }, [newText]);
   let navigate = useNavigate();
   let [show, setShow] = useState(props.data);
@@ -40,7 +43,9 @@ const G = (props) => {
   let [size, setSize] = useState([]);
   let [fab, setFab] = useState([]);
   let [season, setSeason] = useState([]);
-  let [piece, setPiece] = useState([]);
+  let [piece, setPiece] = useState([]); 
+ let [pr1, setPr1] = useState([0, 100000]); 
+  let [fi, setFi] = useState("");
   function operation(id) {
     navigate("/" + id);
   }
@@ -62,26 +67,21 @@ const G = (props) => {
   function collP(id) {
     setPiece(id);
   }
-  let [fi, setFi] = useState("");
   function collFI(id) {
     setFi(id);
   }
-  let [pr1, setPr1] = useState([0, 100000]);
-
   function collPr(id) {
     if (Array.isArray(id)) {
       setPr1(id);
     }
   }
+  const data2 = () => {
+    let arr = [];
 
-   
-
-  const data2 = () => { 
-     let arr=[]
-    
-     const customs = props.data1.filter((val) => newText === val.type)
-      .map((value) =>arr.push(value.name));
-      let data = props.data.filter((item) => arr.includes(item.category));
+    props.data1
+      .filter((val) => newText === val.type)
+      .map((value) => arr.push(value.name));
+    let data = props.data.filter((item) => arr.includes(item.category));
 
     let updated = data;
     if (fab.length) {
@@ -135,6 +135,7 @@ const G = (props) => {
 
   useEffect(() => {
     data2();
+    //eslint-disable-next-line
   }, [fab, piece, color, season, size, fi, pr1, newText]);
 
   return (
@@ -145,6 +146,7 @@ const G = (props) => {
         </div>
         <div className='con'>
           <div className='data'>
+            {/* display categories related to given data name  */}
             {props.data1
               .filter((val) => newText === val.type)
               .map((val) => (
@@ -158,39 +160,101 @@ const G = (props) => {
       </div>
       {/* product display section */}
       <div className='conP'>
-        <div className='Pdis'>
-          {show.map((val) => (
-            <div className='PdisIn'  onClick={()=>navigate("/Product/" + val.id)}>
-              <img className='INfoImg' src={val.images[0]} alt='' />
-              <p className='Tittle01'> {val.name}</p>
-              <p className='P0'>Rs {val.price}</p>
-            </div>
-          ))}
-        </div>
+      <div className="Pdis"><ul  style={{border:'4px solid red',width:'100%',display:'flex',flexDirection:'row',flexWrap:'wrap'}}  >
+{show.map((val,index) =>  
+{
+  if(index%3===0){
+     return  <li key={index}  style={{border:'4px solid black' ,display:'flex',flexDirection:"column",  flex:'0 0 400px',minWidth:'800px'  }} >
+    <img className='INfoImg' src={val.images[0]} alt='12' />
+            <p className='Tittle01'> {val.name}.{index}</p>
+            <p className='P0'>Rs {val.price}</p>
+</li>
+  }
+  else{
+    return  <li key={index}  style={{border:'4px solid black' ,display:'flex', flexDirection:"column"}} >
+    <img className='INfoImg' src={val.images[0]} alt='12' />
+            <p className='Tittle01'> {val.name}</p>
+            <p className='P0'>Rs {val.price}</p>
+</li>
+  }
+}
+
+ )}</ul></div>
         <div className='filter'>
-          <h4>Sort by</h4>
+          <div className='sorting'>
+            <h4 className='none'>Sort by</h4>
+<span className="Fil">
+            <Fil data={Filterion} name={"filterion"} re={collFI} /></span>
+            <span className='display'>
+              <p>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='17'
+                  height='17'
+                  viewBox='0 0 14 14'
+                  fill='none'
+                >
+                  <rect x='8' y='8' width='6' height='6' fill='#C4C4C4'></rect>
+                  <rect x='4' width='6' height='6' fill='#C4C4C4'></rect>
+                  <rect y='8' width='6' height='6' fill='#C4C4C4'></rect>
+                </svg>
+              </p>
+              <p>
+                <svg
+                  width='17'
+                  height='17'
+                  viewBox='0 0 20 20'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <rect width='8.57143' height='8.57143' fill='#C4C4C4'></rect>
+                  <rect
+                    y='11.4286'
+                    width='8.57143'
+                    height='8.57143'
+                    fill='#C4C4C4'
+                  ></rect>
+                  <rect
+                    x='11.4286'
+                    y='11.4286'
+                    width='8.57143'
+                    height='8.57143'
+                    fill='#C4C4C4'
+                  ></rect>
+                  <rect
+                    x='11.4286'
+                    width='8.57143'
+                    height='8.57143'
+                    fill='#C4C4C4'
+                  ></rect>
+                </svg>
+              </p>
+              <p>View All</p>
+            </span>
+          </div>{" "}
+          <div className='filterPart'>
+            <p className='none'>filters</p>
+            <div className='FormCon1'>
+              {" "}
+              <Pri name={"Price"} re={collPr} />
+            </div>
 
-          <Fil data={Filterion} name={"filterion"} re={collFI} />
-
-          <p>filters</p>
-
-          <Pri name={"Price"} re={collPr} />
-
-          {users.map((val) => (
-            <Cr data={val.season} name={"season"} re={collSea} />
-          ))}
-          {users.map((val) => (
-            <Cr data={val.color} name={"val.color"} re={coll} />
-          ))}
-          {users.map((val) => (
-            <Cr data={val.size} name={"size"} re={collSi} />
-          ))}
-          {users.map((val) => (
-            <Cr data={val.fabrics} name={"fabrics"} re={collF} />
-          ))}
-          {users.map((val) => (
-            <Cr data={val.piece} name={"piece"} re={collP} />
-          ))}
+            {users.map((val) => (
+              <Cr data={val.season} name={"season"} re={collSea} />
+            ))}
+            {users.map((val) => (
+              <Cr data={val.color} name={"val.color"} re={coll} />
+            ))}
+            {users.map((val) => (
+              <Cr data={val.size} name={"size"} re={collSi} />
+            ))}
+            {users.map((val) => (
+              <Cr data={val.fabrics} name={"fabrics"} re={collF} />
+            ))}
+            {users.map((val) => (
+              <Cr data={val.piece} name={"piece"} re={collP} />
+            ))}
+          </div>
         </div>
       </div>
     </>

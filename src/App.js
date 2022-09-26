@@ -41,7 +41,7 @@ const App = () => {
 
       data1.forEach((val) => {
         items.push({ ...val.data() });
-      });
+      }) 
       setUsers(items);
     };
 
@@ -122,7 +122,7 @@ const App = () => {
   function setting(id) {
     setItems(id);
   }
-
+ 
   return (
     <Router>
       <Navbar badge={value} />
@@ -155,8 +155,8 @@ const App = () => {
         {cat.map((value, index) => (
           <Route
             path={"/" + value.name}
-            key={index}
-            element={<Items name={value.name} data={users} data1={cat} />}
+           
+            element={<Items nam={value.name} dat={users} dat1={cat} />}
           />
         ))}
 
@@ -164,7 +164,7 @@ const App = () => {
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route
-          path='/'
+          path='/Product'
           element={<Products data={users} data1={cat} />}
         />
         <Route path='/Category' element={<Category data={cat} />} />

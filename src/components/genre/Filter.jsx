@@ -7,7 +7,7 @@ import OptionUnstyled, {
 } from "@mui/base/OptionUnstyled";
 import PopperUnstyled from "@mui/base/PopperUnstyled";
 import { styled } from "@mui/system";
-import { ListItemText, MenuItem, Select } from "@mui/material";
+import { FormControl, ListItemText, MenuItem, Select } from "@mui/material";
 
 const blue = {
   100: "#DAECFF",
@@ -36,7 +36,7 @@ const StyledButton = styled("button")(
   font-family: IBM Plex Sans, sans-serif;
   font-size: 0.875rem;
   box-sizing: border-box;
-  min-height: calc(1.5em + 22px);
+  min-height: calc(1em + 2px);
   min-width: 250px;
   padding: 12px;
   border-radius: 12px;
@@ -146,7 +146,16 @@ const CustomSelect = React.forwardRef(function CustomSelect(props, ref) {
 
   return <SelectUnstyled {...props} ref={ref} components={components} />;
 });
-
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 3.5 + ITEM_PADDING_TOP,
+      width: 240,
+    },
+  },
+};
 export default function UnstyledSelectSimple(props) {
   const data1 = () => {
     let d = JSON.parse(localStorage.getItem(props.name));
@@ -175,7 +184,7 @@ export default function UnstyledSelectSimple(props) {
   React.useEffect(() => data(), [personName]);
   return (
     <>
-    
+       <FormControl variant="standard" sx={{ m: 1 }} className="fromCon" > 
         <Select
           labelId='demo-multiple-checkbox-label'
           id='demo-multiple-checkbox'
@@ -183,7 +192,7 @@ export default function UnstyledSelectSimple(props) {
           value={personName}
           onChange={handleChange}
          renderValue={(selected) => selected}
-         
+         MenuProps={MenuProps}
         >
           {props.data.map((name) => (
             <MenuItem key={name} value={name}>
@@ -192,7 +201,7 @@ export default function UnstyledSelectSimple(props) {
             </MenuItem>
           ))}
         </Select>
-      
+        </FormControl>
     </>
   );
 }

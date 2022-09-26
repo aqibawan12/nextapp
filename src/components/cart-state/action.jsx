@@ -24,6 +24,7 @@ const Action = (props) => {
     const data = localStorage.getItem("state1");
     return data ? JSON.parse(data) :initialState;
   }
+
   const [state, dispatch] = useReducer(reducer,initialState,saved);
     
    

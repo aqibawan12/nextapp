@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import Fil from "./../genre/Filter";
 import Pri from "./../genre/PriceFil";
-import Cr from "./../genre/crumbs";
-import { collection, doc, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+ 
+import {   useLocation, useNavigate } from "react-router-dom";
 
 const Filterion = [
   "Feature",
@@ -20,28 +18,18 @@ const G = (props) => {
   let newText = location.pathname.replace("/", "");
 
   let navigate = useNavigate();
-  let [show, setShow] = useState(props.data);
-  let [color, setColor] = useState([]);
-  let [size, setSize] = useState([]);
-  let [fab, setFab] = useState([]);
-  let [season, setSeason] = useState([]);
-  let [piece, setPiece] = useState([]);
-  function operation(id) {
-    setPiece(props.data1.filter((val) => id === val.sub));
+  let [show, setShow] = useState(props.dat);
+  
+ 
+  
+ 
+  let [piece, setPiece] = useState("");
+  function operation(id, match) {
+    
+    setPiece(match);
     navigate("/" + id);
   }
-
-  function coll(id) {
-    setColor(id);
-  }
-
-  function collSi(id) {
-    setSize(id);
-  }
-
-  function collSea(id) {
-    setSeason(id);
-  }
+  
 
   let [fi, setFi] = useState("");
   function collFI(id) {
@@ -56,38 +44,30 @@ const G = (props) => {
   }
 
   const data2 = () => {
+    let updated = props.dat;
     let arr = [];
     let arr1 = [];
-    if (piece.length) {
-      const customs = piece.map((value) => arr1.push(value.nam));
 
-      let data = props.data.filter((item) => arr1.includes(item.category));
-      setFab(data);
+    if (piece.length) {
+      let send = props.dat1.filter((val) => val.sub === piece);
+      send.map((value) => arr1.push(value.sub));
+
+      let data = props.dat.filter((item) => arr1.includes(item.sub));
+    updated=data
     } else {
-      const customs = props.data1
+      props.dat1
         .filter((val) => newText === val.name)
         .map((value) => arr.push(value.name));
-      let data = props.data.filter((item) => arr.includes(item.sub));
-      setFab(data);
-    }
-    let updated = fab;
-
-    if (color.length) {
-      updated = updated.filter((item) => color.includes(item.color));
-    }
-    if (season.length) {
-      updated = updated.filter((item) => season.includes(item.season));
-    }
-    if (size.length) {
-      updated = updated.filter((item) => size.includes(item.size));
+      let data = props.dat.filter((item) => arr.includes(item.category));
+    updated=data
     }
 
+  
     if (pr1.length) {
       updated = updated.filter(
         (item) => item.price >= pr1[0] && item.price <= pr1[1]
       );
     }
-
     if (fi.length) {
       if (fi === Filterion[0]) {
         updated = updated.filter((val) => val.feature === true);
@@ -117,7 +97,8 @@ const G = (props) => {
 
   useEffect(() => {
     data2();
-  }, [fab, piece, color, season, size, fi, pr1, newText]);
+     //eslint-disable-next-line
+  }, [fi,piece,pr1]);
 
   return (
     <>
@@ -127,10 +108,11 @@ const G = (props) => {
         </div>
         <div className='con'>
           <div className='data'>
-            {props.data1
+            {/* display sub categories related to given category */}
+            {props.dat1
               .filter((val) => newText === val.sub)
               .map((val) => (
-                <div className='dI' onClick={() => operation(val.nam)}>
+                <div className='dI' onClick={() => operation(val.nam, val.sub)}>
                   <img className='dImage' src={val.imz} alt='12' />{" "}
                   <h4 className='dText'>{val.nam}</h4>
                 </div>
@@ -142,13 +124,15 @@ const G = (props) => {
       <div className='conP'>
         <div className='Pdis'>
           {show.map((val) => (
-           
-              <div className='PdisIn' onClick={()=>navigate("/Product/" + val.id)}>
-                <img className='INfoImg' src={val.images[0]} alt='' />
-                <p className='Tittle01'> {val.name}</p>
-                <p className='P0'>Rs {val.price}</p>
-              </div>
-           
+            //  dispay data related to given category
+            <div
+              className='PdisIn'
+              onClick={() => navigate("/Product/" + val.id)}
+            >
+              <img className='INfoImg' src={val.images[0]} alt='' />
+              <p className='Tittle01'> {val.name}</p>
+              <p className='P0'>Rs {val.price}</p>
+            </div>
           ))}
         </div>
         <div className='filter'>
