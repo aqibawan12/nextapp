@@ -43,11 +43,11 @@ const G = (props) => {
   let [size, setSize] = useState([]);
   let [fab, setFab] = useState([]);
   let [season, setSeason] = useState([]);
-  let [piece, setPiece] = useState([]); 
- let [pr1, setPr1] = useState([0, 100000]); 
+  let [piece, setPiece] = useState([]);
+  let [pr1, setPr1] = useState([0, 100000]);
   let [fi, setFi] = useState("");
   function operation(id) {
-    navigate("/" + id);
+    navigate("/Category/" + id);
   }
   function coll(id) {
     setColor(id);
@@ -160,31 +160,41 @@ const G = (props) => {
       </div>
       {/* product display section */}
       <div className='conP'>
-      <div className="Pdis"><ul  style={{border:'4px solid red',width:'100%',display:'flex',flexDirection:'row',flexWrap:'wrap'}}  >
-{show.map((val,index) =>  
-{
-  if(index%3===0){
-     return  <li key={index}  style={{border:'4px solid black' ,display:'flex',flexDirection:"column",  flex:'0 0 400px',minWidth:'800px'  }} >
-    <img className='INfoImg' src={val.images[0]} alt='12' />
-            <p className='Tittle01'> {val.name}.{index}</p>
-            <p className='P0'>Rs {val.price}</p>
-</li>
-  }
-  else{
-    return  <li key={index}  style={{border:'4px solid black' ,display:'flex', flexDirection:"column"}} >
-    <img className='INfoImg' src={val.images[0]} alt='12' />
-            <p className='Tittle01'> {val.name}</p>
-            <p className='P0'>Rs {val.price}</p>
-</li>
-  }
-}
-
- )}</ul></div>
+        <div className='Pdis'>
+          <ul  className="Pul1"
+         
+          >
+            {show.map((val, index) => {
+              if (index % 3 === 0) {
+                return (
+                  <li key={index} className='TwoD'>
+                    
+                    <img className='INfoImg' src={val.images[0]} alt='12' />
+                    <p className='Tittle011'>
+                      {" "}
+                      {val.name}.{index}
+                    </p>
+                    <p className='P01'>Rs {val.price}</p>
+                  </li>
+                );
+              } else {
+                return (
+                  <li key={index} className='Block'>
+                    <img className="INfoImg1" src={val.images[0]} alt='12' />
+                    <p className='Tittle011'> {val.name}</p>
+                    <p className='P01'>Rs {val.price}</p>
+                  </li>
+                );
+              }
+            })}
+          </ul>
+        </div>
         <div className='filter'>
           <div className='sorting'>
             <h4 className='none'>Sort by</h4>
-<span className="Fil">
-            <Fil data={Filterion} name={"filterion"} re={collFI} /></span>
+            <span className='Fil'>
+              <Fil data={Filterion} name={"filterion"} re={collFI} />
+            </span>
             <span className='display'>
               <p>
                 <svg

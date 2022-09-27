@@ -15,7 +15,7 @@ const Filterion = [
 ];
 const G = (props) => {
   let location = useLocation();
-  let newText = location.pathname.replace("/", "");
+  let newText = location.pathname.replace("/Category/", "");
 
   let navigate = useNavigate();
   let [show, setShow] = useState(props.dat);
@@ -27,7 +27,7 @@ const G = (props) => {
   function operation(id, match) {
     
     setPiece(match);
-    navigate("/" + id);
+    navigate("/Category/" + id);
   }
   
 
@@ -98,17 +98,17 @@ const G = (props) => {
   useEffect(() => {
     data2();
      //eslint-disable-next-line
-  }, [fi,piece,pr1]);
+  }, [fi,piece,pr1,newText,show]);
 
   return (
     <>
-      <div className='g'>
+        <div className='g'>
         <div className='gTd'>
-          <h1 className='gTh1'>{newText}</h1>
+          <h1 className='gTh1'>{newText} Display</h1>
         </div>
         <div className='con'>
           <div className='data'>
-            {/* display sub categories related to given category */}
+            {/* display sub categories related to given category */} 
             {props.dat1
               .filter((val) => newText === val.sub)
               .map((val) => (
@@ -122,27 +122,96 @@ const G = (props) => {
       </div>
       {/* product display section */}
       <div className='conP'>
-        <div className='Pdis'>
-          {show.map((val) => (
-            //  dispay data related to given category
-            <div
-              className='PdisIn'
-              onClick={() => navigate("/Product/" + val.id)}
-            >
-              <img className='INfoImg' src={val.images[0]} alt='' />
-              <p className='Tittle01'> {val.name}</p>
-              <p className='P0'>Rs {val.price}</p>
-            </div>
-          ))}
+      <div className='Pdis'>
+          <ul  className="Pul1"
+         
+          >
+            {show.map((val, index) => {
+              if (index % 3 === 0) {
+                return (
+                  <li key={index} className='TwoD'>
+                    
+                    <img className='INfoImg' src={val.images[0]} alt='12' />
+                    <p className='Tittle011'>
+                      {" "}
+                      {val.name}.{index}
+                    </p>
+                    <p className='P01'>Rs {val.price}</p>
+                  </li>
+                );
+              } else {
+                return (
+                  <li key={index} className='Block'>
+                    <img className="INfoImg1" src={val.images[0]} alt='12' />
+                    <p className='Tittle011'> {val.name}</p>
+                    <p className='P01'>Rs {val.price}</p>
+                  </li>
+                );
+              }
+            })}
+          </ul>
         </div>
         <div className='filter'>
-          <h4>Sort by</h4>
-
-          <Fil data={Filterion} name={"filterion"} re={collFI} />
-
-          <p>filters</p>
-
-          <Pri name={"Price"} re={collPr} />
+          <div className='sorting'>
+            <h4 className='none'>Sort by</h4>
+            <span className='Fil'>
+              <Fil data={Filterion} name={"filterion"} re={collFI} />
+            </span>
+            <span className='display'>
+              <p>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='17'
+                  height='17'
+                  viewBox='0 0 14 14'
+                  fill='none'
+                >
+                  <rect x='8' y='8' width='6' height='6' fill='#C4C4C4'></rect>
+                  <rect x='4' width='6' height='6' fill='#C4C4C4'></rect>
+                  <rect y='8' width='6' height='6' fill='#C4C4C4'></rect>
+                </svg>
+              </p>
+              <p>
+                <svg
+                  width='17'
+                  height='17'
+                  viewBox='0 0 20 20'
+                  fill='none'
+                  xmlns='http://www.w3.org/2000/svg'
+                >
+                  <rect width='8.57143' height='8.57143' fill='#C4C4C4'></rect>
+                  <rect
+                    y='11.4286'
+                    width='8.57143'
+                    height='8.57143'
+                    fill='#C4C4C4'
+                  ></rect>
+                  <rect
+                    x='11.4286'
+                    y='11.4286'
+                    width='8.57143'
+                    height='8.57143'
+                    fill='#C4C4C4'
+                  ></rect>
+                  <rect
+                    x='11.4286'
+                    width='8.57143'
+                    height='8.57143'
+                    fill='#C4C4C4'
+                  ></rect>
+                </svg>
+              </p>
+              <p>View All</p>
+            </span>
+          </div>{" "}
+          <div className='filterPart'>
+            <p className='none'>filters</p>
+            <div className='FormCon1'>
+              {" "}
+              <Pri name={"Price"} re={collPr} />
+            </div>
+ 
+          </div>
         </div>
       </div>
     </>

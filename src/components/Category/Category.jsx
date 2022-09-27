@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Category = (props) => {
   let navigate = useNavigate();
   function operation(name) {
-    navigate("/" + name);
+    navigate("/Category/" + name);
   }
   const n = "a1";
  let data = props.data.filter((val)=>val.name)

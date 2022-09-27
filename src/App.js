@@ -154,7 +154,7 @@ const App = () => {
 {/* <Items value={value.name} data={users} data1={cat} /> */}
         {cat.map((value, index) => (
           <Route
-            path={"/" + value.name}
+            path={"/Category/" + value.name}
            
             element={<Items nam={value.name} dat={users} dat1={cat} />}
           />

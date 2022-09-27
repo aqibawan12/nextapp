@@ -60,7 +60,7 @@
     margin-top: 7px;
 }
 
-/* product display start */
+
 .conP {
 
     display: flex;
@@ -68,113 +68,63 @@
     width: 100%;
 }
 
-.Pdis {
-    height: fit-content;
-    width: 87%;
+/* product display start */
+.Pul1 {
+
     display: flex;
-   
-     flex-direction: row-reverse;
-   
+    flex-direction: row;
+    flex-wrap: wrap;
 
 }
 
-.PdisIn {
+ul {
+    padding: 0px;
+}
+
+.TwoD {
+    height: 409px;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 1px rgb(176, 168, 138);
     display: flex;
     flex-direction: column;
-    margin-bottom: 22px;
+    flex: 0 1 1px;
+
+    margin: 4px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.Block {
+    height: 409px;
     box-sizing: border-box;
-    box-shadow: 0px 1px 0px;
+    box-shadow: 0px 1px 1px rgb(176, 168, 138);
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 1px;
+   
+    margin: 4px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+   
 }
 
-.Tittle01 {
-    font-size: medium;
-    font-weight: bold;
-    margin: 4px;
-    margin-bottom: 12px;
+.Pdis {
+    width: 100%;
+    margin-top: -30px;
 }
 
-.P0 {
-    font-size: medium;
-    font-weight: 400;
-    margin: 4px;
-    margin-bottom: 12px;
-}
- 
+
 .INfoImg {
     width: 250px;
-    height: 270px;
+    height: 300px;
 }
- 
 
-.filter {
-
-    width: 20rem
+.INfoImg1 {
+    width: 250px;
+    height: 300px;
 }
-.FormCon{
-    width: 15rem;
-   
-}
-.display{
-    display: none;
-}
-@media only screen and (max-width:1300px) {
-    .g {
-        margin-top: 150px;
-    }
 
-    .gTd {
-        margin-top: 0px;
-        transform: translate(50%);
-    }
-
-    .gTh1 {
-        transform: translate(15%);
-    }
-
-    .con {
-        width: 100%;
-      
-        transform: translate(0);
-       margin-top: 12px;
-    }
-    .data {   
-         justify-content: center; 
-        width: 100%;
-        margin: 0px;
-       
-    }
-    .dI {
-        width: 87px;
-        
-        margin: 0%; 
-    }
-    .dImage {
-        width: 75px;
-        border-radius: 80px;
-        height: 85px;
-    }
-
-.conP {
-
-    display: flex;
-    flex-direction: column-reverse;
-    width: 100%;
-}
-/* product display start */
- .Pdis{
-    width: 100%;
-   
- }
- .PdisIn1{
- 
-    box-shadow: 0px 0px 0px;
- }
-
- .INfoImg1{
-    width: 300px;
- }
-
- .Tittle011 {
+.Tittle011 {
     width: 95%;
     font-size: medium;
     font-weight: bold;
@@ -189,58 +139,191 @@
     font-weight: 400;
     margin: 3px;
     margin-bottom: 12px;
-    box-shadow: 0px 0.6px 0px;
-}
- 
 
-/* filters */
-.filter{
-    width: 100%;
-    display: flex;
-    flex-direction: column-reverse;
-    flex-wrap: wrap;
-    border-top: 2px solid rgb(164, 124, 98);
+}
+
+
+
+.PR12 {
+    width: 95%;
+    font-size: medium;
+    font-weight: 600;
+    margin: 3px;
     margin-bottom: 12px;
- 
-}
-.FormCon{
-    width:70px;
 
-   
 }
-.FormCon1{
-    margin-top: 14px;
-      
+
+/* product display end */
+
+
+
+
+
+
+
+.filter {
+
+    width: 20rem
 }
+
+.FormCon {
+    width: 15rem;
+
+}
+
+.display {
+    display: none;
+}
+
+
+
+@media screen and (max-width:1300px) {
+    .g {
+        margin-top: 150px;
+    }
+
+    .gTd {
+        margin-top: 0px;
+        transform: translate(50%);
+    }
+
+    .gTh1 {
+        transform: translate(10%);
+    }
+
+    .con {
+        width: 100%;
+
+        transform: translate(0);
+        margin-top: 12px;
+    }
+
+    .data {
+        justify-content: center;
+        width: 100%;
+        margin: 0px;
+
+    }
+
+    .dI {
+        width: 87px;
+
+        margin: 0%;
+    }
+
+    .dImage {
+        width: 75px;
+        border-radius: 80px;
+        height: 85px;
+    }
+
+    .conP {
+
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    /* product display start */
+    
+    .TwoD {
+        box-sizing: border-box;
+        box-shadow: 0px 1px 1px rgb(176, 168, 138);
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 1200px;
+
+        min-width: 260px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    .Block {
+        box-sizing: border-box;
+        box-shadow: 0px 1px 1px rgb(176, 168, 138);
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 100px;
+        min-width: 100px;
+        margin: 4px;
+    }
+
  
-.none{
-    display:none;
-}
-.filterPart{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
- 
-   margin-bottom: 12px;
-}
- .sorting{
-   display: flex;
-   flex-direction: row;
-   margin:4px;
-   justify-content: space-between;
-   align-items:center;
- }
- .Fil{
-    margin: 4px;
- }
-.display{
-    display: flex;
-    margin: 4px;
-    justify-content: space-evenly;
-   
-}
-.display p{
-    margin: 4px;
-}
+
+
+    .INfoImg {
+        width: initial;
+        height: 300px;
+    }
+
+    .INfoImg1 {
+        width: initial;
+        height: 250px;
+
+    }
+
+    
+
+
+
+    
+
+    /* filters */
+    .filter {
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+        border-top: 2px solid rgb(164, 124, 98);
+        margin-bottom: 12px;
+
+    }
+
+    .FormCon {
+        width: 70px;
+
+
+    }
+
+    .FormCon1 {
+        margin-top: 14px;
+
+    }
+
+    .none {
+        display: none;
+    }
+
+    .filterPart {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        margin-bottom: 12px;
+    }
+
+    .sorting {
+        border: 4px;
+        display: flex;
+        flex-direction: row;
+        margin: 4px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .Fil {
+        margin: 4px;
+    }
+
+    .display {
+        display: flex;
+        margin: 4px;
+        justify-content: space-evenly;
+
+    }
+
+    .display p {
+        margin: 4px;
+    }
 }
