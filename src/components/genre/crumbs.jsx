@@ -24,6 +24,7 @@ const MenuProps = {
 export default function MultipleSelectCheckmarks(props) {
   const data1 = () => {
     let d = JSON.parse(localStorage.getItem(props.name));
+   
    return d?d:[]
   };
   const [personName, setPersonName] = React.useState(data1);

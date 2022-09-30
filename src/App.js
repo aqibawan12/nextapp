@@ -13,9 +13,9 @@ import About from "./components/./About/About";
 import Share from "./components/Share/Share.jsx";
 import data from "./components/./Products/data";
 import Des from "./components/./Products/Des.jsx";
-import image from "./components/./Products/images";
+import Footer from "./footer";
 import Items from "./components/Category/display";
-import CatData from "./components/Category/cat";
+ 
 import Cart from "./components/./Cart/Cart.jsx";
 
 import {
@@ -159,6 +159,13 @@ const App = () => {
             element={<Items nam={value.name} dat={users} dat1={cat} />}
           />
         ))}
+          {cat.map((value, index) => (
+          <Route
+            path={"/cat/"+value.nam+     "/sub/" + value.sub}
+           
+            element={<Items nam={value.name} dat={users} dat1={cat} />}
+          />
+        ))}
 
         <Route path='/' element={<Home data={users} data1={cat} />} />
         <Route path='/signup' element={<Signup />} />
@@ -191,6 +198,7 @@ const App = () => {
           }
         />
       </Routes>
+      <Footer/>
     </Router>
   );
 };

@@ -68,7 +68,7 @@ const Nd = (props) => {
             <AccountCircleRoundedIcon />
           </p>
         )}
-        <div className='ind'>
+       
           <p 
                       onClick={() => {
               props.selection("women");
@@ -98,16 +98,17 @@ const Nd = (props) => {
           <p
             onClick={() => {
               props.selection("sale");
-              nav("/genre/"+'sale');
+             
             }}
           >
             
             <Link className="t" to={"genre/Sale "}> Sale </Link>
           </p>
-        </div>
+        
         {isDesktop && (
           <p
             style={{
+            
               marginRight: "32px",
               textTransform: "uppercase",
               cursor: "pointer",
@@ -126,7 +127,7 @@ const Nd = (props) => {
           >
             <p
               style={{
-                marginTop: "35px",
+              
                 marginLeft: "22px",
                 fontSize: "44px",
                 color: "darkred",

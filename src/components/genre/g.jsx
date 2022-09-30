@@ -71,6 +71,7 @@ const G = (props) => {
     setFi(id);
   }
   function collPr(id) {
+     
     if (Array.isArray(id)) {
       setPr1(id);
     }

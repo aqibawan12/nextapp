@@ -1,0 +1,110 @@
+ /* product display start */
+.Pul {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+ 
+
+.TwoD1 {
+  height: 409px;
+
+  display: flex;
+ 
+  flex-direction: column;
+  flex: 1 1 1200px;
+
+  min-width: 260px;
+  margin: 8px;
+ 
+  
+}
+
+.Block1 {
+  height: 409px;
+  box-sizing: border-box;
+ 
+  display: flex;
+  flex-direction: column;
+  flex-direction: column;
+  flex: 1 1 100px;
+  margin: 6px;
+ 
+ 
+}
+
+.Pdis1 {
+  width: 100%;
+  
+}
+
+
+.INfoImg3 {
+  width: initial;
+  height: 409px;
+}
+
+.INfoImg11 {
+  width: 650px;
+  height: 409px;
+
+}
+
+.Tittle0111 {
+  width: fit-content;
+  font-size: larger;
+  font-weight: bold;
+  margin: 3px;
+  margin-top: -29px;
+  margin-left: 29px;
+color: white;
+  
+}
+
+ 
+
+
+@media  screen and (max-width:1300px) {
+  
+
+  /* product display start */
+  
+  .TwoD1 {
+      box-sizing: border-box;
+     
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 1200px;
+
+      min-width: 260px;
+     
+  }
+
+  .Block1 {
+      box-sizing: border-box;
+      
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 100px;
+      min-width: 100px;
+      margin: 4px;
+  }
+
+
+
+
+  .INfoImg1 {
+      width: initial;
+     
+  }
+
+  .INfoImg11 {
+      width: initial;
+      
+
+  }
+ 
+}

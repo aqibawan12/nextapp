@@ -1,5 +1,5 @@
 import React from "react";
-import data from "./cat";
+import "./cat.css"
 import { useNavigate } from "react-router-dom";
 const Category = (props) => {
   let navigate = useNavigate();
@@ -13,22 +13,35 @@ const Category = (props) => {
     <div  >
       
 
-      <div className='cagS'  >
-        { data.map((val) => (
-          <div
-          
-            className={val.items}
-            onClick={() => {
-              operation(val.name);
-            }}
+        <div className='Pdis1'>
+          <ul  className="Pul"
+         
           >
-            <div>
-             
-              <img src={val.image} alt='12' /> <h2>{val.name}</h2>
-            </div>
-          </div>
-        ))}
-      </div>
+            {data.map((val, index) => {
+              if (index % 3 === 0) {
+                return (
+                  <li key={index} className='TwoD1'>
+                    
+                    <img className='INfoImg3' src={val.image} alt='12' />
+                    <p className='Tittle0111'>
+                      {" "}
+                      {val.name} 
+                    </p>
+                  
+                  </li>
+                );
+              } else {
+                return (
+                  <li key={index} className='Block1'>
+                    <img className="INfoImg11" src={val.image} alt='12' />
+                    <p className='Tittle0111'> {val.name}</p>
+                    
+                  </li>
+                );
+              }
+            })}
+          </ul>
+        </div>
     </div>
   );
 };

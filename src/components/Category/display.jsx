@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Fil from "./../genre/Filter";
 import Pri from "./../genre/PriceFil";
  
-import {   useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Filterion = [
   "Feature",
@@ -15,21 +15,37 @@ const Filterion = [
 ];
 const G = (props) => {
   let location = useLocation();
-  let newText = location.pathname.replace("/Category/", "");
 
+  let [newText, setNewText] = useState("");
   let navigate = useNavigate();
   let [show, setShow] = useState(props.dat);
-  
- 
-  
- 
   let [piece, setPiece] = useState("");
-  function operation(id, match) {
-    
-    setPiece(match);
-    navigate("/Category/" + id);
+  let n = location.pathname.split("");
+  let start = n.indexOf("t");
+  let end = n.indexOf("s");
+  n = n.slice(start + 2, end - 1).toString();
+
+  let b = location.pathname.split("");
+  let start1 = b.indexOf("b");
+
+  b = b.slice(start1 + 2).toString();
+
+  useEffect(() => {
+    if (location.pathname.includes("/Category/")) {
+      setPiece("");
+      setNewText(location.pathname.replace("/Category/", ""));
+    } else {
+      setNewText(n);
+      setPiece("1");
+    }
+  }, [location]);
+
+  function operation(name, match) {
+    setPiece(name);
+    navigate("/cat/" + name + "/sub/" + match);
   }
-  
+
+  let newText2 = location.pathname.replace("/Category/", "");
 
   let [fi, setFi] = useState("");
   function collFI(id) {
@@ -49,20 +65,27 @@ const G = (props) => {
     let arr1 = [];
 
     if (piece.length) {
-      let send = props.dat1.filter((val) => val.sub === piece);
-      send.map((value) => arr1.push(value.sub));
+      console.log(n);
+      let send = props.dat1.filter((val) => val.sub === b);
+      send.map((value) => {
+        if (value.nam === n) {
+          arr1.push(value.nam);
+        }
+      });
 
-      let data = props.dat.filter((item) => arr1.includes(item.sub));
-    updated=data
+      let data = props.dat
+        .filter((item) => arr1.includes(item.sub))
+        .filter((val) => val.category === b);
+
+      updated = data;
     } else {
       props.dat1
         .filter((val) => newText === val.name)
         .map((value) => arr.push(value.name));
       let data = props.dat.filter((item) => arr.includes(item.category));
-    updated=data
+      updated = data;
     }
 
-  
     if (pr1.length) {
       updated = updated.filter(
         (item) => item.price >= pr1[0] && item.price <= pr1[1]
@@ -97,20 +120,20 @@ const G = (props) => {
 
   useEffect(() => {
     data2();
-     //eslint-disable-next-line
-  }, [fi,piece,pr1,newText,show]);
+    //eslint-disable-next-line
+  }, [fi, pr1, newText, n, b, piece]);
 
   return (
     <>
-        <div className='g'>
+      <div className='g'>
         <div className='gTd'>
-          <h1 className='gTh1'>{newText} Display</h1>
+          <h1 className='gTh1'>{newText}</h1>
         </div>
         <div className='con'>
           <div className='data'>
-            {/* display sub categories related to given category */} 
+            {/* display sub categories related to given category */}
             {props.dat1
-              .filter((val) => newText === val.sub)
+              .filter((val) => newText2 === val.sub)
               .map((val) => (
                 <div className='dI' onClick={() => operation(val.nam, val.sub)}>
                   <img className='dImage' src={val.imz} alt='12' />{" "}
@@ -122,18 +145,14 @@ const G = (props) => {
       </div>
       {/* product display section */}
       <div className='conP'>
-      <div className='Pdis'>
-          <ul  className="Pul1"
-         
-          >
+        <div className='Pdis'>
+          <ul className='Pul1'>
             {show.map((val, index) => {
               if (index % 3 === 0) {
                 return (
                   <li key={index} className='TwoD'>
-                    
                     <img className='INfoImg' src={val.images[0]} alt='12' />
                     <p className='Tittle011'>
-                      {" "}
                       {val.name}.{index}
                     </p>
                     <p className='P01'>Rs {val.price}</p>
@@ -142,7 +161,7 @@ const G = (props) => {
               } else {
                 return (
                   <li key={index} className='Block'>
-                    <img className="INfoImg1" src={val.images[0]} alt='12' />
+                    <img className='INfoImg1' src={val.images[0]} alt='12' />
                     <p className='Tittle011'> {val.name}</p>
                     <p className='P01'>Rs {val.price}</p>
                   </li>
@@ -210,7 +229,6 @@ const G = (props) => {
               {" "}
               <Pri name={"Price"} re={collPr} />
             </div>
- 
           </div>
         </div>
       </div>
