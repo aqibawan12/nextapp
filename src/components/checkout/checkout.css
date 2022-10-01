@@ -1,0 +1,56 @@
+.checkout{
+    display: flex;
+}
+.Ist{
+    width:10%
+}
+.Snd{
+    width:100%
+}
+.Lcrumbs{
+    display: flex;
+    flex-direction: row;
+}
+.Lcrumbs p{
+    text-align: center;
+    text-transform: uppercase;
+}
+.shippingAde{
+display: flex;
+flex-direction: column;
+ margin:'4px'
+}
+ 
+.SFeild{
+ 
+   display: flex;
+margin: 4px ;
+}
+.feild1{
+    margin: 6px;
+}
+.PChec{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.DESCH{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+   
+    width: 120%;
+}
+.CHsETT{
+    display: flex;
+    flex-direction: column;
+  
+    margin: 4px;
+}
+.imgCH{
+    width: 120px;
+    height: 110px;
+}
+.ValueCh{
+    font-size: larger;
+}

@@ -63,6 +63,7 @@ const Cart = (props) => {
                 id={val.id}
                 price={val.price}
                 stock={val.stock}
+                image={val.images[0]}
                 stockValue={val.stockValue}
                 plus={plus}
                 minus={minus}

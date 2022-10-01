@@ -17,12 +17,13 @@ import Footer from "./footer";
 import Items from "./components/Category/display";
  
 import Cart from "./components/./Cart/Cart.jsx";
+import Checkout from "./components/checkout/Checkout.jsx";
 
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation,
+   
 } from "react-router-dom";
 import { collection, doc, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
@@ -178,6 +179,7 @@ const App = () => {
         <Route path='/Feature' element={<Feature data={users} />} />
         <Route path='/About' element={<About />} />
         <Route path='/Share' element={<Share />} />
+        <Route path='/Checkout' element={<Checkout cartState={state} total ={price} />} />
         {data.map((val) => (
           <Route
             path={"/genre/" + val.name}

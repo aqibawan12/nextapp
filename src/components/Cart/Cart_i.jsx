@@ -29,7 +29,7 @@ const Cart_i = (props) => {
       <div className='cartDetail'>
         <img
           className='image55'
-          src='https://cdn.shopify.com/s/files/1/2635/3244/products/WEB_0282_3e23347f-3d49-47fd-8d79-2fc362623cb2.jpg?v=1660902417'
+          src={props.image}
           alt='12'
         />
         <div className='cartMid'>
@@ -78,7 +78,13 @@ const Cart_i = (props) => {
           </div>
         </div>
       </div>
-      {/* <div className='CartEnd'>
+    
+    </div>
+  );
+};
+
+export default Cart_i; 
+ {/* <div className='CartEnd'>
         <div className='single'>
        
         </div>
@@ -91,8 +97,3 @@ const Cart_i = (props) => {
           <h4>{val}</h4>
         </div>
       </div> */}
-    </div>
-  );
-};
-
-export default Cart_i;
