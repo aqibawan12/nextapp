@@ -8,20 +8,20 @@ import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
 
-const Login = () => {
+const Login = (props) => {
   const navigate = useNavigate();
   const [value, setValues] = useState({
     Name: "",
     Email: "",
     Phone_Number: "",
     Password: "",
-  });
-
-  const [errorText2, setErrorText2] = useState();
-
+  }); const [errorText2, setErrorText2] = useState();
+  const lS=JSON.parse(localStorage.getItem("loginState"))
+ 
+  let [t,sT]=useState(lS?lS:false)
   const [errorText4, setErrorText4] = useState();
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
-  const handleSubmission = () => {
+  const HandleSubmission = () => {
     if (!value.Email || !validator.isEmail(value.Email)) {
       setErrorText2("please provide valid Email");
       return;
@@ -33,19 +33,29 @@ const Login = () => {
       return;
     }
     setErrorText4("");
-
+  
+  
+ 
+    
+  
     setSubmitButtonDisabled(true);
     signInWithEmailAndPassword(auth, value.Email, value.Password)
-      .then(async (res) => {
+      .then(async (res) => { 
+         localStorage.setItem("ls",JSON.stringify(res.user.providerData ))
         setSubmitButtonDisabled(false);
-
+       props.tru(true)
         navigate("/");
+        console.log()
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);
         setErrorText4(err.message);
-      });
+      });  
   };
+if (t) {
+  navigate('/')
+} else {
+  
 
   return (
     <>
@@ -103,7 +113,7 @@ const Login = () => {
             <Button
               size='large'
               variant='contained'
-              onClick={handleSubmission}
+              onClick={HandleSubmission}
               disabled={submitButtonDisabled}
             >
               Button
@@ -121,7 +131,7 @@ const Login = () => {
         </Card>
       </Box>
     </>
-  );
+  );}
 };
 
 export default Login;

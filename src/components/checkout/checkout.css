@@ -1,56 +1,170 @@
-.checkout{
+.checkout {
     display: flex;
+
 }
-.Ist{
-    width:10%
+
+.Ist {
+    width: 50%;
+    margin: 5rem;
+
 }
-.Snd{
-    width:100%
+
+.sndPart {
+    background-color: azure;
+    width: 70%;
 }
-.Lcrumbs{
+
+.Snd {
+
+    margin: 5rem;
+    margin-top: 20px;
+    border-bottom: 1px solid silver;
+
+    width: 70%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.Snd:hover {
+    overflow-y: scroll;
+}
+
+.CartPro1 {
+    margin: 20px;
+}
+
+
+.Lcrumbs {
     display: flex;
     flex-direction: row;
 }
-.Lcrumbs p{
+
+.Lcrumbs p {
     text-align: center;
     text-transform: uppercase;
 }
-.shippingAde{
-display: flex;
-flex-direction: column;
- margin:'4px'
+
+.shippingAde {
+    display: flex;
+    flex-direction: column;
+    margin: '4px'
 }
- 
-.SFeild{
- 
-   display: flex;
-margin: 4px ;
+
+.SFeild {
+
+    display: flex;
+    margin: 4px;
 }
-.feild1{
+
+.feild1 {
     margin: 6px;
 }
-.PChec{
+
+.PChec {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.DESCH{
+
+.DESCH {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-   
-    width: 120%;
+    width: 100%;
+
+
 }
-.CHsETT{
+
+.ValueCh {
+    width: 200px;
+    font-size: 22px;
+    margin-top: 1rem;
+}
+
+.ValueCh1 {
+    width: 100px;
+    margin-left: 50px;
+}
+
+.CHsETT {
     display: flex;
     flex-direction: column;
-  
-    margin: 4px;
+
+    margin: 10px;
 }
-.imgCH{
+
+.imgCH {
     width: 120px;
-    height: 110px;
+    height: 140px;
+
 }
-.ValueCh{
-    font-size: larger;
+
+.typeCH {
+    margin-top: -1.3rem;
+
+}
+.shipCH{
+    font-weight: 900;
+    text-align: center;
+}
+.typeCH1 {
+    margin-top: -1rem;
+
+}
+.sumbitCheck{
+    display: flex;
+    margin: 6px;
+    margin-top: 26px;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.sumbitCheck button{
+    width:50%;
+    background-color: black;
+    color: wheat;
+ }
+ .sumbitCheck p{
+ display: flex;
+ justify-content: space-between;
+ font-size: 19px;
+     
+ }
+.DisSec{
+    width: 70%; margin: 5rem;
+    margin-top: -55px;
+    display: flex;
+    flex-direction: row;
+}
+#disTEx{
+  background-color: #fff;
+ 
+}
+#disTEx:hover{
+    border:1px solid blue;
+}
+.disBtn{
+    width: 20%;
+    
+    
+    margin: 4px;
+    border-radius: 4px;
+  
+    
+}
+.SubCh{  width: 70%; margin: 5rem;margin-top: -55px;
+    display: flex;
+    justify-content: space-between;
+  font-weight: bold;
+}
+.loginInfo{
+    margin: 10px;
+}
+.imageLogin{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   box-shadow: 0px 0.9px 0px;
+}
+.imageLogin img{
+    width: 60px;
+    height: 60px;
 }

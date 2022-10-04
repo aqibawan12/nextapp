@@ -8,7 +8,7 @@ import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import validator from 'validator'
 
-const Signup = () => {
+const Signup = (props) => {
   const navigate = useNavigate();
   const [value, setValues] = useState({
     Name: "",
@@ -51,20 +51,34 @@ const Signup = () => {
     createUserWithEmailAndPassword(auth, value.Email,value.Password)
       .then(async (res) => {
         setSubmitButtonDisabled(false);
-       
+      
         const user = res.user;
         await updateProfile(user, {
           displayName: value.Name,
           photoURL:value.Phone_Number
           
         });
+        localStorage.setItem("ls",JSON.stringify(res.user.providerData ))
+
+        props.tru(true,value.Name,value.Email)
         navigate("/");
+       
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);
         setErrorText4(err.message);
       });
   };
+  const lS=JSON.parse(localStorage.getItem("loginState"))
+ 
+  let [t,sT]=useState(lS?lS:false)
+  if (t) {
+    return <div onClick={navigate('/')}></div>
+  } else {
+    
+ 
+
+
   return (
    
     <> 
@@ -172,7 +186,7 @@ const Signup = () => {
         </Card>
       </Box>
     </>
-  );
+  ); }
 };
 
 export default Signup;

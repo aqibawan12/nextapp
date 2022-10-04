@@ -15,16 +15,11 @@ import data from "./components/./Products/data";
 import Des from "./components/./Products/Des.jsx";
 import Footer from "./footer";
 import Items from "./components/Category/display";
- 
+
 import Cart from "./components/./Cart/Cart.jsx";
 import Checkout from "./components/checkout/Checkout.jsx";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-   
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { collection, doc, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
 import { useEffect, useState } from "react";
@@ -42,7 +37,7 @@ const App = () => {
 
       data1.forEach((val) => {
         items.push({ ...val.data() });
-      }) 
+      });
       setUsers(items);
     };
 
@@ -123,7 +118,21 @@ const App = () => {
   function setting(id) {
     setItems(id);
   }
- 
+  const lS = JSON.parse(localStorage.getItem("loginState"));
+  let [t, sT] = useState(lS ? lS : false);
+  let [n, sN] = useState("First");
+  let [e, sE] = useState("First");
+
+  function trup(val, nam, em) {
+    sE(em);
+    sN(nam);
+    sT(val);
+    localStorage.setItem("loginState", JSON.stringify(val));
+  }
+  function rn(tr) {
+    sT(tr);
+    localStorage.setItem("loginState", JSON.stringify(tr));
+  }
   return (
     <Router>
       <Navbar badge={value} />
@@ -152,25 +161,24 @@ const App = () => {
             }
           />
         ))}
-{/* <Items value={value.name} data={users} data1={cat} /> */}
+        {/* <Items value={value.name} data={users} data1={cat} /> */}
         {cat.map((value, index) => (
           <Route
             path={"/Category/" + value.name}
-           
             element={<Items nam={value.name} dat={users} dat1={cat} />}
           />
         ))}
-          {cat.map((value, index) => (
+        {cat.map((value, index) => (
           <Route
-            path={"/cat/"+value.nam+     "/sub/" + value.sub}
-           
+            path={"/cat/" + value.nam + "/sub/" + value.sub}
             element={<Items nam={value.name} dat={users} dat1={cat} />}
           />
         ))}
 
         <Route path='/' element={<Home data={users} data1={cat} />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup tru={trup} />} />
+
+        <Route path='/login' element={<Login tru={trup} />} />
         <Route
           path='/Product'
           element={<Products data={users} data1={cat} />}
@@ -179,7 +187,19 @@ const App = () => {
         <Route path='/Feature' element={<Feature data={users} />} />
         <Route path='/About' element={<About />} />
         <Route path='/Share' element={<Share />} />
-        <Route path='/Checkout' element={<Checkout cartState={state} total ={price} />} />
+        <Route
+          path='/Checkout'
+          element={
+            <Checkout
+              cartState={state}
+              total={price}
+              logi={t}
+              n={n}
+              e={e}
+              rn={rn}
+            />
+          }
+        />
         {data.map((val) => (
           <Route
             path={"/genre/" + val.name}
@@ -200,7 +220,7 @@ const App = () => {
           }
         />
       </Routes>
-      <Footer/>
+      <Footer />
     </Router>
   );
 };

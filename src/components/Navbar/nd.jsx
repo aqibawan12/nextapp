@@ -106,7 +106,7 @@ const Nd = (props) => {
           </p>
         
         {isDesktop && (
-          <p
+          <p onClick={()=>nav("/checkout")}
             style={{
             
               marginRight: "32px",
@@ -155,7 +155,7 @@ const Nd = (props) => {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-            <p
+            <p onClick={()=>nav("/checkout")}
               style={{
                 fontSize: "13px",
                 margin: "10px",
