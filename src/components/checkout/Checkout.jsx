@@ -15,6 +15,12 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
 
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+
+import FormLabel from "@mui/material/FormLabel";
+
 import { MenuItem } from "@mui/material";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -28,17 +34,84 @@ const Checkout = (props) => {
       label: "pkr",
     },
   ];
+
+  const [errorText1, setErrorText1] = useState();
+
+  const [errorText2, setErrorText2] = useState();
+
+  const [errorText3, setErrorText3] = useState();
+  const [errorText4, setErrorText4] = useState();
+  const [errorText5, setErrorText5] = useState();
   let navigate = useNavigate();
   const [currency, setCurrency] = React.useState("Pakistan");
+  const [em, setEm] = React.useState();
+  const [name, setName] = React.useState();
+  const [lname, setLName] = React.useState();
+  const [add, setAdd] = React.useState();
+  const [apar, setApar] = React.useState();
+  const [no, setNo] = React.useState();
+  const [City, setCity] = React.useState();
+  function Operation() {
+    if (!name) {
+      setErrorText1("Provide valid name");
+      return;
+    }
+    setErrorText1("");
+    if (!lname) {
+      setErrorText2("Provide valid name");
+      return;
+    }
+    setErrorText2("");
+    if (!add) {
+      setErrorText3("Provide Your Shipping address");
+      return;
+    }
+    setErrorText3("");
+    if (!no) {
+      setErrorText4("Provide Valid Phone number ");
+      return;
+    }
+    setErrorText4("");
+    
+    if (!City) {
+      setErrorText5("Please select ypur City");
+      return;
+    }
+    setErrorText5("");
+    setD('dis')
+    setD1('')
+  }
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
   };
-  const [currency1, setCurrency1] = React.useState("Lahore");
-
-  const handleChange1 = (event) => {
-    setCurrency1(event.target.value);
+  const handleChangeName = (event) => {
+    setName(event.target.value);
   };
+  const handleChangeLName = (event) => {
+    setLName(event.target.value);
+  };
+  const handleChangeAdd = (event) => {
+    setAdd(event.target.value);
+  };
+  const handleChangeApar = (event) => {
+    setApar(event.target.value);
+  };
+  const handleChangeNo = (event) => {
+    setNo(event.target.value);
+  };
+  const handleChangeEm = (event) => {
+    setEm(event.target.value);
+  
+  }; 
+
+  // const selected = (e) => {
+  //   if (e.) {
+  //    
+  //   }
+  // };
+ 
+
   let [show, sShow] = React.useState([]);
   const top100Film = () => {
     let arr = [];
@@ -54,19 +127,24 @@ const Checkout = (props) => {
     top100Film();
   }, []);
   let [t, sT] = useState([]);
-  
-    const lS = JSON.parse(localStorage.getItem("ls"));
-    
- 
+
+  const lS = JSON.parse(localStorage.getItem("ls"));
+
+  let [dis, setD] = useState("");
+  let [dis1, setD1] = useState("dis");
+  let [dis2, setD2] = useState("dis");
   let login = props.logi;
-  function loginOut() {
-    let name=[]
+
+  function LoginOut() {
+    let name = [];
     if (login) {
-      lS.map((val)=>{
-        name.push(val.displayName,val.email)
+      lS.map((val) => {
+        name.push(val.displayName, val.email);
         
-      })
-      console.log(name)
+      });
+ useEffect(()=>{
+  setEm(name[0])
+ })
       return (
         <>
           <div className='loginInfo'>
@@ -111,21 +189,203 @@ const Checkout = (props) => {
             </span>
           </p>
           <div className='AccHeld'>
-            <TextField label='Email' fullWidth type='email' />
+            <TextField
+              value={em}
+              onChange={handleChangeEm}
+              label='Email'
+              fullWidth
+              type='email'
+            />
           </div>
         </>
       );
     }
   }
+
+  function shipping() {
+    return (
+      <>
+        <div className={dis1}>
+          <div style={{ border: "1px solid" }}>
+            <div
+              style={{
+                display: "flex",
+              }}
+            >
+              <span className='shipCut'>
+                {" "}
+                <p className='shipCutP1'>Contact</p>
+                <p className='shipCutP2'>{em}</p>
+              </span>
+
+              <p style={{ flex: "0 1 55px" }}>change</p>
+            </div>
+            <p className='line'></p>
+            <div style={{ display: "flex" }}>
+              <span className='shipCut' style={{ marginBottom: "12px" }}>
+                {" "}
+                <p className='shipCutP1'>Ship to</p>
+                <p className='shipCutP2'>{add} </p>
+              </span>
+              <p style={{ flex: "0 1 55px" }}>change</p>
+            </div>{" "}
+          </div>
+          <div style={{ margin: "4px" }}>
+            <p className='pt12'>Shipping method</p>
+            <p
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                border: "1px solid",
+                height: "40px",
+              }}
+            >
+              <span style={{ marginLeft: "7px" }}>
+                <RadioGroup
+                  aria-labelledby='demo-radio-buttons-group-label'
+                  defaultValue='other'
+                  checked={true}
+                  name='radio-buttons-group'
+                >
+                  <FormControlLabel
+                    value='other'
+                    control={<Radio />}
+                    label='Home Delivery'
+                  />
+                </RadioGroup>
+              </span>{" "}
+              <span style={{ marginTop: "12px", marginRight: "14px" }}>
+                Free
+              </span>
+            </p>
+            <div className='sumbitCheck' style={{ marginTop: "52px" }}>
+              <button
+                type='reset'
+                onClick={() => {
+                  setD("dis");
+                  setD1("dis");
+                }}
+              >
+                Continue to Payment
+              </button>
+              <p>
+                <span className='btncheck'>
+                  <FiChevronLeft />
+                  RETURN TO INFORMATION
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+  function shipMethod() {
+    return (
+      <>
+        <div className={dis2}>
+          <div style={{ border: "1px solid" }}>
+            <div
+              style={{
+                display: "flex",
+                marginTop: "-1px",
+                marginBottom: "-10px",
+              }}
+            >
+              <span className='shipCut'>
+                {" "}
+                <p className='shipCutP1'>Contact</p>
+                <p className='shipCutP2'>{em} </p>
+              </span>
+
+              <p style={{ flex: "0 1 55px" }}>change</p>
+            </div>
+            <p className='line'></p>
+            <div
+              style={{
+                display: "flex",
+                marginTop: "-1px",
+                marginBottom: "-15px",
+              }}
+            >
+              <span className='shipCut' style={{ marginBottom: "12px" }}>
+                {" "}
+                <p className='shipCutP1'>Ship to</p>
+                <p className='shipCutP2'>{add} </p>
+              </span>
+              <p style={{ flex: "0 1 55px" }}>change</p>
+            </div>{" "}
+            <p className='line'></p>
+            <div
+              style={{
+                display: "flex",
+                marginTop: "-5px",
+                marginBottom: "-8px",
+              }}
+            >
+              <span className='shipCut' style={{ marginBottom: "12px" }}>
+                {" "}
+                <p className='shipCutP1'>Contact</p>
+                <p className='shipCutP2'>awanaqin826@gmail.com</p>
+              </span>
+              <p style={{ flex: "0 1 55px", visibility: "hidden" }}>change</p>
+            </div>{" "}
+          </div>
+
+          <div style={{ margin: "4px" }}>
+            <p className='pt12'>Payment</p>
+            <p
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                border: "1px solid",
+                height: "40px",
+              }}
+            >
+              <span style={{ marginLeft: "7px" }}>
+                <RadioGroup
+                  aria-labelledby='demo-radio-buttons-group-label'
+                  defaultValue='other'
+                  checked={true}
+                  name='radio-buttons-group'
+                >
+                  <FormControlLabel
+                    value='other'
+                    control={<Radio />}
+                    label='CASH ON DELIVERY (COD)'
+                  />
+                </RadioGroup>
+              </span>{" "}
+              <span style={{ marginTop: "12px", marginRight: "14px" }}>
+                Free
+              </span>
+            </p>
+            <div className='sumbitCheck' style={{ marginTop: "52px" }}>
+              <button
+                type='reset'
+                onClick={() => {
+                  setD("dis");
+                  setD1("dis");
+                }}
+              >
+                Complete your order
+              </button>
+              <p style={{ textTransform: "uppercase" }}>
+                <span className='btncheck'>
+                  <FiChevronLeft />
+                  return to shipping
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
   return (
     <div className='checkout'>
       <div className='Ist'>
         <span className='Lcrumbs'>
-          <p>cart</p>
-          <p>
-            <FiChevronRight />
-          </p>
-
           <p>information</p>
           <p>
             <FiChevronRight />
@@ -141,106 +401,133 @@ const Checkout = (props) => {
             <FiChevronRight />
           </p>
         </span>
-        {loginOut()}
-        <p className='shipCH'>Shipping Address</p>
-        <div className='shippingAde'>
-          <div className='feild1'>
-            <TextField
-              fullWidth
-              id='filled-select-Country'
-              select
-              label='Country'
-              value={currency}
-              onChange={handleChange}
-              variant='filled'
-            >
-              {currencies.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.value}
-                </MenuItem>
-              ))}
-            </TextField>
-          </div>
-          <span className='SFeild'>
+        {shipMethod()}
+        {shipping()}
+
+        <div className={dis}>
+          {LoginOut()}
+          <p className='shipCH'>Shipping Address</p>
+          <div className='shippingAde'>
             <div className='feild1'>
               <TextField
                 fullWidth
-                id='filled-select-name'
-                label='First Name'
+                id='filled-select-Country'
+                select
+                label='Country'
                 value={currency}
                 onChange={handleChange}
                 variant='filled'
-              />
+              >
+                {currencies.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.value}
+                  </MenuItem>
+                ))}
+              </TextField>
             </div>
-            <div className='feild1'>
-              <TextField
-                fullWidth
-                id='filled-select-name'
-                label='Last Name'
-                value={currency}
-                onChange={handleChange}
-                variant='filled'
-              />
-            </div>
-          </span>
-          <div className='feild1'>
-            <TextField
-              fullWidth
-              id='filled-select-Address'
-              label='Address'
-              value={currency}
-              onChange={handleChange}
-              variant='filled'
-            />
-          </div>
-          <div className='feild1'>
-            <TextField
-              fullWidth
-              id='filled-select-apartment'
-              label='Apartment,suite,etc. (optional)'
-              value={currency}
-              onChange={handleChange}
-              variant='filled'
-            />
-          </div>
-          <div className='feild1'>
-            <Autocomplete
-              disablePortal
-              id='combo-box-demo'
-              options={show}
-              fullWidth
-              renderInput={(params) => (
+            <span className='SFeild'>
+              <div className='feild1'>
                 <TextField
-                  label='City'
+                  fullWidth
+                  id='filled-select-name'
+                  label='First Name'
+                  helperText={errorText1}
+                  error={errorText1}
+                  value={name}
+                  onChange={handleChangeName}
                   variant='filled'
-                  {...params}
-                  name='name'
                 />
-              )}
-            />
-          </div>
-          <div className='feild1'>
-            <TextField
-              fullWidth
-              id='filled-select-no'
-              label='Phone Number'
-              typeof='Number'
-              value={currency}
-              onChange={handleChange}
-              variant='filled'
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position='start'>92</InputAdornment>
-                ),
-              }}
-            ></TextField>{" "}
-            <div className='sumbitCheck'>
-              <button type='reset'>Continue to shopping</button>
-              <p>
-                {" "}
-                <FiChevronLeft />
-                Continue to shopping
-              </p>
+              </div>
+              <div className='feild1'>
+                <TextField
+                  fullWidth
+                  id='filled-select-name'
+                  label='Last Name'
+                  helperText={errorText2}
+                  error={errorText2}
+                  value={lname}
+                  onChange={handleChangeLName}
+                  variant='filled'
+                />
+              </div>
+            </span>
+            <div className='feild1'>
+              <TextField
+                fullWidth
+                id='filled-select-Address'
+                label='Address'
+                helperText={errorText3}
+                error={errorText3}
+                value={add}
+                onChange={handleChangeAdd}
+                variant='filled'
+              />
+            </div>
+            <div className='feild1'>
+              <TextField
+                fullWidth
+                id='filled-select-apartment'
+                label='Apartment,suite,etc. (optional)'
+                value={apar}
+                onChange={handleChangeApar}
+                variant='filled'
+              />
+            </div>
+            <div className='feild1'>
+              <Autocomplete
+                disablePortal
+                id='combo-box-demo'
+                options={show}
+                inputValue={City}
+                onInputChange={(event, newInputValue) => {
+                  setCity(newInputValue);
+                }}
+                fullWidth
+                renderInput={(params) => (
+                  <TextField
+                    label='City'
+                    variant='filled'
+                    helperText={errorText5}
+                    error={errorText5}
+                    {...params}
+                    name='name'
+                  />
+                )}
+              />
+            </div>
+            <div className='feild1'>
+              <TextField
+                fullWidth
+                id='filled-select-no'
+                label='Phone Number'
+                type='number'
+                value={no}
+                helperText={errorText4}
+                error={errorText4}
+                onChange={handleChangeNo}
+                variant='filled'
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position='start'>92</InputAdornment>
+                  ),
+                }}
+              ></TextField>{" "}
+              <div className='sumbitCheck'>
+                <button
+                  type='reset'
+                  onClick={() => {
+                    Operation();
+                  }}
+                >
+                  Continue to shipping
+                </button>
+                <p>
+                  <span className='btncheck'>
+                    <FiChevronLeft />
+                    Continue to shopping
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
