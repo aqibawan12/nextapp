@@ -36,6 +36,13 @@ const Reducer = (state, action) => {
     });
     return { ...state, item: updatedCart };
   }
+  if (action.type === "empty") {
+    let updatedCart= state.item.map((val)=>{
+      return {...val,stockValue:0}
+    })
+    return { ...state,item: updatedCart };
+  }
+
   if (action.type === "Total") {
     let { totalItem, price } = state.item.reduce(
       (accum, current) => {

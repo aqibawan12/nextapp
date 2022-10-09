@@ -5,14 +5,14 @@ const Footer = () => {
     <div  style={{
         borderTop: "1px solid",
         width: "100%",
-           
+        
         display: "flex",
         justifyContent: "center",
-      }}>
+      }} className="footer">
       <h4 onClick={ ()=> window.location.replace("http://localhost:3000/Feature")}
         style={{
          
-          margin: "8px",
+        
          
           cursor:"pointer"
         }}

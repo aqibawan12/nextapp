@@ -1,8 +1,12 @@
 .checkout {
     display: flex;
-
+ 
 }
 
+.mobileCH {
+    display: none;
+}
+ 
 .Ist {
     width: 50%;
     margin: 5rem;
@@ -41,6 +45,11 @@
 .Lcrumbs {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
+}
+
+.colorP {
+    color: red;
 }
 
 .Lcrumbs p {
@@ -204,39 +213,47 @@
 .shipCutP2 {
     flex: 1 0 220px;
 }
-.pt12{
+
+.pt12 {
     font-size: 25px;
     color: red;
 }
-.line{
-    border: .5px solid  ;
+
+.line {
+    border: .5px solid;
     width: 96%;
     margin-top: 10px;
     transform: translate(1%);
-    margin-bottom:-1px
+    margin-bottom: -1px
+}
+.footer{
+    margin-top: 200px;
 }
 @media screen and (max-width:1300px) {
+    .footer{
+        margin-top: 500px;
+    }
     .Ist {
         width: 100%;
-        margin: 12px;
+        margin: 1px;
     }
 
     .Lcrumbs {
-        transform: translate(1%);  
+        transform: translate(1%);
     }
 
     .Lcrumbs p {
         font-size: 12px;
-        
+
     }
 
     .shipCut {
-      
+
         display: flex;
         flex: 1 0 220px;
         flex-direction: column;
         margin-top: -12px;
-      
+
     }
 
     .shipCutP1 {
@@ -248,39 +265,116 @@
 
     .shipCutP2 {
         margin-left: 20px;
-margin-bottom: -5px;
+        margin-bottom: -5px;
         flex: 0%;
 
     }
+
     .sumbitCheck {
-   width: 100%;
-   margin: 0px;
-   margin-top: 52px;
+        width: 100%;
+        margin: 0px;
+        margin-top: 52px;
         flex-direction: column;
         justify-content: flex-start;
-        
+
     }
-    .pt12{
+
+    .pt12 {
         font-size: 20px;
         color: red;
     }
+
     .sumbitCheck button {
         width: 100%;
         height: 50px;
         background-color: black;
         color: wheat;
     }
+
     .sumbitCheck p {
         display: flex;
         justify-content: flex-start;
-      transform: translate(0%);
+        transform: translate(0%);
         font-size: 19px;
-      
-        
-    }
-    .btncheck{
-       
-          transform: translate(20%);
+
 
     }
+
+    .btncheck {
+cursor: pointer;
+        transform: translate(20%);
+
+    }
+
+    .mobileCH {
+        display: flex;
+
+
+        width: 100%;
+    }
+
+    .mobileInn {
+
+        font-size: 22px;
+        width: 100%;
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid;
+
+
+    }
+
+    .cartSumA {
+
+        margin-top: 2px;
+        display: inline-flex;
+    }
+
+    .CSum {
+        margin-left: 10px;
+        text-transform: uppercase;
+font-size: 22px;
+    }
+
+    .CIcon {
+        margin-top: 3px;
+    }
+    .CTotal{
+        margin-right: 12px;
+    }
+    .sndPart {
+     display: none;
+   
+    }
+    .Snd{
+        margin: 0rem;
+        width: 100%;
+    }
+    .sndPart12 {
+        background-color: azure;
+        width: 100%;
+       
+    }
+    .DisSec {
+        width: 100%;
+        margin: 0rem;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+    .SubCh {
+        width: 100%;
+        margin: 5rem;
+        margin-left: 0px;
+        margin-top: -55px;
+        display: flex;
+        justify-content: space-between;
+        font-weight: bold;
+    }
+    .checkout{
+        flex-direction: column-reverse;
+      
+    }
+
 }

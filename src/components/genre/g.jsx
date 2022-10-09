@@ -168,7 +168,7 @@ const G = (props) => {
             {show.map((val, index) => {
               if (index % 3 === 0) {
                 return (
-                  <li key={index} className='TwoD'>
+                  <li key={index} className='TwoD' onClick={()=>navigate("/Product/" + val.id)}>
                     
                     <img className='INfoImg' src={val.images[0]} alt='12' />
                     <p className='Tittle011'>
@@ -180,7 +180,7 @@ const G = (props) => {
                 );
               } else {
                 return (
-                  <li key={index} className='Block'>
+                  <li key={index} className='Block' onClick={()=>navigate("/Product/" + val.id)}>
                     <img className="INfoImg1" src={val.images[0]} alt='12' />
                     <p className='Tittle011'> {val.name}</p>
                     <p className='P01'>Rs {val.price}</p>

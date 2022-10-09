@@ -1,10 +1,11 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import "./nav.css";
 import { useNavigate,Link,to } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useMediaQuery } from "react-responsive";
 import SearchIcon from "@mui/icons-material/Search";
+ 
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -47,15 +48,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Nd = (props) => {
+  function op() {
+    if( props.badge>0){
+      nav("/checkout")
+    }
+  }
   const nav = useNavigate();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1300px)" });
   const isDesktop = useMediaQuery({ query: "(min-width: 1300px)" });
-
+  let [se,Ss]=useState("")
+  const handleChangeEvent =(event)=>{
+    Ss(event.target.value)
+    if(event.target.value){
+      nav("/search")
+    }
+    else{
+      nav("/")
+    }
+  }
+  props.refr(se)
   return (
     <>
       <div className='Nd'>
         {isDesktop && (
-          <p
+          <p onClick={()=>nav("/Signup")}
             style={{
               marginTop: "35px",
               marginLeft: "22px",
@@ -106,7 +122,7 @@ const Nd = (props) => {
           </p>
         
         {isDesktop && (
-          <p onClick={()=>nav("/checkout")}
+          <p onClick={()=>op()}
             style={{
             
               marginRight: "32px",
@@ -125,7 +141,7 @@ const Nd = (props) => {
             className='Nd'
             style={{ marginTop: "90px", backgroundColor: "#e3dddc" }}
           >
-            <p
+            <p onClick={()=>nav("/Signup")}
               style={{
               
                 marginLeft: "22px",
@@ -151,11 +167,12 @@ const Nd = (props) => {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder='Search…'
+              placeholder={se}
+              onChange={handleChangeEvent}
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-            <p onClick={()=>nav("/checkout")}
+            <p onClick={()=>op()}
               style={{
                 fontSize: "13px",
                 margin: "10px",

@@ -69,6 +69,13 @@ const Action = (props) => {
       payload: props.clear2,
     });
   }, [props.clear2]);
+  useEffect(()=>{
+    if(props.empty==="1"){
+    return dispatch({
+      type:"empty"
+    })}
+  },[props.empty])
+   
   useEffect(() => {
     props.total(state.totalItem, state.item, state.price);
   });

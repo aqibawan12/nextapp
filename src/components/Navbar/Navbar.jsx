@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React  from "react";
 import Feilds from "./Feilds.jsx";
-
+import {useState} from 'react'
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -180,7 +180,17 @@ export default function PrimarySearchAppBar(props) {
       </div>
     </Box>
   );
-
+let [se,Ss]=useState("")
+const handleChangeEvent =(event)=>{
+  Ss(event.target.value)
+  if(event.target.value){
+    navigate("/search")
+  }
+  else{
+    navigate("/")
+  }
+}
+props.refr(se)
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -230,7 +240,8 @@ export default function PrimarySearchAppBar(props) {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder='Search…'
+              placeholder={se}
+              onChange={handleChangeEvent}
               inputProps={{ "aria-label": "search" }}
             />
           </Search>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Button, TextField } from "@mui/material";
 import Card from "@mui/material/Card";
 import { Box } from "@mui/system";
@@ -7,7 +7,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
-
+import Acc from './../signup/account'
 const Login = (props) => {
   const navigate = useNavigate();
   const [value, setValues] = useState({
@@ -52,8 +52,16 @@ const Login = (props) => {
         setErrorText4(err.message);
       });  
   };
-if (t) {
-  navigate('/')
+  function op() {
+    if(t===true){
+   navigate('/My-Account')
+    }
+     
+  }
+  useEffect(()=>op(),[t===true])
+  
+    if (t) {
+     return <p onClick={op()}>Logged in</p>
 } else {
   
 
@@ -91,6 +99,7 @@ if (t) {
           </div>
           <div className='textbox1'>
             <TextField
+            autocomplete
               required
               label='Email'
               type='email'

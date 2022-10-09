@@ -15,10 +15,10 @@ import data from "./components/./Products/data";
 import Des from "./components/./Products/Des.jsx";
 import Footer from "./footer";
 import Items from "./components/Category/display";
-
+import Acc from "./components/signup/account.jsx";
 import Cart from "./components/./Cart/Cart.jsx";
 import Checkout from "./components/checkout/Checkout.jsx";
-
+import Search from "./search.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { collection, doc, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
@@ -63,7 +63,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setEff(true);
-    }, 6000);
+    }, 1000);
   });
 
   function operation(id, count) {
@@ -74,7 +74,7 @@ const App = () => {
   let [pluss, setPluss] = useState();
   let [minuss, setMinuss] = useState();
   let [clears, setClears] = useState();
-
+  let [z, setZ] = useState();
   function plus(id) {
     setPluss(id);
   }
@@ -84,10 +84,14 @@ const App = () => {
   function empty(id) {
     setClears(id);
   }
+  function zero(id) {
+    setZ(id);
+  }
   useEffect(() => {
     operation();
     plus();
     minus();
+    zero();
   });
 
   function passing() {
@@ -101,6 +105,7 @@ const App = () => {
           plus0={pluss}
           minus1={minuss}
           clear2={clears}
+          empty={z}
         />
       );
     }
@@ -132,17 +137,31 @@ const App = () => {
   function rn(tr) {
     sT(tr);
     localStorage.setItem("loginState", JSON.stringify(tr));
+    localStorage.setItem("ls", JSON.stringify([]));
   }
+  let [send, reSend] = useState("");
+  function onag(id) {
+    if (id.length) {
+      reSend(id);
+    }
+  }
+  const dataFea = state.filter((val) => val.feature === true);
   return (
     <Router>
-      <Navbar badge={value} />
+      <Navbar badge={value} refr={onag} />
+
+      {}
       <div style={{ marginBottom: "135px" }}>
         {" "}
-        <Nd selection={setting} />
+        <Nd selection={setting} badge={value}  refr={onag}  />
       </div>
 
       {passing()}
       <Routes>
+       
+         <Route path='/search' element={<Search value={send} user={users} />} />
+        
+
         {users.map((value) => (
           <Route
             path={"/Product/" + value.id}
@@ -184,9 +203,10 @@ const App = () => {
           element={<Products data={users} data1={cat} />}
         />
         <Route path='/Category' element={<Category data={cat} />} />
-        <Route path='/Feature' element={<Feature data={users} />} />
+        <Route path='/Feature' element={<Feature data={dataFea} />} />
         <Route path='/About' element={<About />} />
         <Route path='/Share' element={<Share />} />
+        <Route path='/My-Account' element={<Acc refr={rn} />} />
         <Route
           path='/Checkout'
           element={
@@ -197,13 +217,15 @@ const App = () => {
               n={n}
               e={e}
               rn={rn}
+              badge={value}
+              z={zero}
             />
           }
         />
         {data.map((val) => (
           <Route
             path={"/genre/" + val.name}
-            element={<G name={item} data={users} data1={cat} />}
+            element={<G name={item} data={users} data1={cat} badge={value} />}
           />
         ))}
         <Route
