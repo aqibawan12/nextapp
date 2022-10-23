@@ -63,7 +63,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setEff(true);
-    }, 1000);
+    }, 6000);
   });
 
   function operation(id, count) {
