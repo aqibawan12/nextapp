@@ -8,7 +8,7 @@
     "@emotion/styled": "^11.9.3",
     "@mui/base": "^5.0.0-alpha.98",
     "@mui/icons-material": "^5.8.4",
-    "@mui/material": "^5.9.2",
+    "@mui/material": "^5.10.16",
     "@mui/styled-engine-sc": "^5.8.0",
     "@react-firebase/auth": "^0.2.10",
     "@testing-library/jest-dom": "^5.16.4",
